@@ -1,0 +1,13 @@
+{% extends 'base_home.html' %}
+{% block content %}
+{% load i18n %}
+<div class="index animate-fadeIn">
+    <p class="index-text2 animate-rise">{% trans "不動産物件情報サイト" %}</p>
+    <h1 class="animate-rise">LIVING HUB</h1>
+    
+    <p class="index-text animate-rise">共通の趣味やライフスタイルに合わせた物件を提供します。<br>
+        同じ趣味や興味を持つ人々が集まるコミュニティを形成し、<br>快適な住生活をサポートします。</p>
+    <p class="index2property animate-rise"><a href="{% url "stores:property_list" %}">{% trans "エリアから探す" %}</a></p>
+</div>
+<div id="root"></div>
+{% endblock %}

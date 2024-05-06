@@ -1,0 +1,204 @@
+/* 헤더 */
+
+.header-wrap {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+    z-index: 10000;
+    opacity: 1;
+}
+
+.header-line1 {
+    display: flex;
+    background-color: #d9d9d9;
+    height: 4vh;
+    padding: 0 1vw;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.header-line1 ul {
+    display: flex;
+}
+
+.header-line1 ul li {
+    font-size: 0.8vmax;
+    padding: 0 1vw;
+}
+
+.header-line1 ul li+li {
+    border-left: 1px solid #333;
+}
+
+.header-line2 {
+    display: flex;
+    background-color: #ffffff;
+    height: 5vh;
+    padding: 0 1vw;
+}
+
+.header-line2-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.header-line2-container ul {
+    width: 39%;
+    display: flex;
+    justify-content: center;
+}
+
+.header-line2-container ul li {
+    width: 33%;
+    margin: 0 auto;
+    text-align: center;
+    font-size: 0.9vmax;
+}
+
+.header-title {
+    width: 30%;
+    display: flex;
+    align-items: center;
+}
+
+.header-title img {
+    width: 2vw;
+    height: 6vh;
+}
+
+.header-title p {
+    font-size: 1vmax;
+    font-weight: 400;
+    margin-left: 0.5vw;
+}
+
+.header-right {
+    width: 30%;
+}
+
+
+/* 푸터 */
+
+.footer-wrap {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    height: 7vh;
+    background-color: #d9d9d9;
+    display: flex;
+    font-size: 0.7vw;
+    align-items: center;
+    justify-content: space-around;
+    opacity: 1;
+}
+
+.footer-links,
+.footer-access ul,
+.footer-accounts {
+    display: flex;
+    /* flexbox 레이아웃 사용 */
+    padding: 0.5vh 0;
+    /* 상하 패딩 */
+}
+
+.footer-links li,
+.footer-access ul li,
+.footer-accounts li {
+    padding: 0 1vw;
+    /* 좌우 패딩 */
+}
+
+.footer-links li+li,
+.footer-access ul li+li,
+.footer-accounts li+li {
+    border-left: 1px solid #333;
+    /* 항목 사이에 세로 경계선 추가 */
+}
+
+.background-container {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+    display: flex;
+    /* Flexbox 레이아웃 사용 */
+    justify-content: center;
+    /* 수평 중앙 정렬 */
+    /* 수직 중앙 정렬 */
+}
+
+.background-effect-container {
+    position: absolute;
+    width: 30%;
+    height: 25%;
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(2px);
+    z-index: 1;
+    top: 15%;
+    left: 50%;
+    /* 중앙 정렬을 위해 추가 */
+    transform: translateX(-50%);
+    /* 중앙 정렬을 위해 추가 */
+    border-radius: 15px;
+    /* 모서리를 동그랗게 */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    /* 그림자 추가 */
+}
+
+.content-container {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    padding-top: 5rem;
+    top: 9%;
+}
+
+.explore-button {
+    margin-top: 1rem;
+    padding: 0.5rem 1rem;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 0.25rem;
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.title {
+    font-size: 60px;
+}
+
+.subtitle {
+    margin-bottom: 7%;
+}
+
+@keyframes riseAnimation {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.animate-rise {
+    animation: riseAnimation 1.5s ease-out forwards;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.animate-fadeIn {
+    animation: fadeIn 2s ease-out forwards;
+}

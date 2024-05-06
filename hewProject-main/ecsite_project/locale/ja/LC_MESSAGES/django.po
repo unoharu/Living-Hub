@@ -1,0 +1,910 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-02-19 05:13+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#: ecsite_project/settings.py:163 templates/accounts/language.html:30
+msgid "English"
+msgstr "English"
+
+#: ecsite_project/settings.py:164
+msgid "Japanese"
+msgstr ""
+
+#: ecsite_project/settings.py:165
+msgid "Chinese"
+msgstr ""
+
+#: templates/accounts/language.html:17 templates/accounts/logout.html:17
+#: templates/accounts/my_property.html:17
+#: templates/accounts/password_change.html:17
+#: templates/accounts/password_change_done.html:17
+#: templates/accounts/update.html:17 templates/accounts/update_done.html:17
+#: templates/user.html:17 templates/user.html:27
+msgid "マイページTOP"
+msgstr ""
+
+#: templates/accounts/language.html:18 templates/accounts/logout.html:18
+#: templates/accounts/my_property.html:18
+#: templates/accounts/password_change.html:18
+#: templates/accounts/password_change_done.html:18
+#: templates/accounts/update.html:18 templates/accounts/update.html:26
+#: templates/accounts/update_done.html:18 templates/user.html:18
+#: templates/user.html:36
+msgid "プロフィール編集"
+msgstr ""
+
+#: templates/accounts/language.html:19 templates/accounts/logout.html:19
+#: templates/accounts/my_property.html:19
+#: templates/accounts/password_change.html:19
+#: templates/accounts/password_change.html:26
+#: templates/accounts/password_change_done.html:19
+#: templates/accounts/password_change_done.html:26
+#: templates/accounts/update.html:19 templates/accounts/update_done.html:19
+#: templates/accounts/update_done.html:27 templates/user.html:19
+#: templates/user.html:46
+msgid "パスワードの変更"
+msgstr ""
+
+#: templates/accounts/language.html:20 templates/accounts/language.html:26
+#: templates/accounts/logout.html:20 templates/accounts/my_property.html:20
+#: templates/accounts/password_change.html:20
+#: templates/accounts/password_change_done.html:20
+#: templates/accounts/update.html:20 templates/accounts/update_done.html:20
+#: templates/user.html:20 templates/user.html:55
+msgid "言語設定"
+msgstr ""
+
+#: templates/accounts/language.html:21 templates/accounts/logout.html:21
+#: templates/accounts/my_property.html:21
+#: templates/accounts/my_property.html:27
+#: templates/accounts/password_change.html:21
+#: templates/accounts/password_change_done.html:21
+#: templates/accounts/update.html:21 templates/accounts/update_done.html:21
+#: templates/user.html:21 templates/user.html:67
+msgid "契約物件情報"
+msgstr ""
+
+#: templates/accounts/language.html:22 templates/accounts/logout.html:22
+#: templates/accounts/logout.html:27 templates/accounts/logout.html:32
+#: templates/accounts/my_property.html:22
+#: templates/accounts/password_change.html:22
+#: templates/accounts/password_change_done.html:22
+#: templates/accounts/update.html:22 templates/accounts/update_done.html:22
+#: templates/user.html:22 templates/user.html:76
+msgid "ログアウト"
+msgstr ""
+
+#: templates/accounts/language.html:29
+msgid "日本語"
+msgstr ""
+
+#: templates/accounts/language.html:31
+msgid "簡体中文"
+msgstr ""
+
+#: templates/accounts/logout.html:29
+msgid "ご利用いただいているアカウントからログアウトしますか？"
+msgstr ""
+
+#: templates/accounts/logout.html:30
+msgid ""
+"ログアウトすると、現在のセッションが終了し、再度ログインが必要となります。"
+msgstr ""
+
+#: templates/accounts/my_property.html:46 templates/stores/like_list.html:242
+#: templates/stores/property_detail.html:42
+#: templates/stores/property_detail_room.html:33
+#: templates/stores/property_detail_room.html:81
+#: templates/stores/property_list.html:242 templates/stores/purchase.html:23
+msgid "徒歩"
+msgstr ""
+
+#: templates/accounts/my_property.html:46 templates/stores/like_list.html:242
+#: templates/stores/property_detail.html:42
+#: templates/stores/property_detail_room.html:33
+#: templates/stores/property_detail_room.html:81
+#: templates/stores/property_list.html:242 templates/stores/purchase.html:23
+msgid "分"
+msgstr ""
+
+#: templates/accounts/my_property.html:61 templates/stores/like_list.html:258
+#: templates/stores/property_detail.html:57
+#: templates/stores/property_list.html:258
+msgid "居住者の声"
+msgstr ""
+
+#: templates/accounts/my_property.html:62 templates/accounts/update.html:31
+#: templates/regist.html:37 templates/stores/like_list.html:259
+#: templates/stores/property_detail.html:58
+#: templates/stores/property_list.html:259 templates/user_confirm.html:15
+msgid "ニックネーム"
+msgstr ""
+
+#: templates/accounts/my_property.html:73
+msgid "契約している物件はありません"
+msgstr ""
+
+#: templates/accounts/password_change.html:39
+msgid "変更"
+msgstr ""
+
+#: templates/accounts/password_change_done.html:29
+msgid "パスワードを変更しました"
+msgstr ""
+
+#: templates/accounts/password_change_done.html:30
+msgid "マイページへ戻る"
+msgstr ""
+
+#: templates/accounts/update.html:31 templates/accounts/update.html:38
+#: templates/regist.html:13 templates/regist.html:21 templates/regist.html:29
+#: templates/regist.html:37
+msgid "必須"
+msgstr ""
+
+#: templates/accounts/update.html:38 templates/regist.html:13
+#: templates/user_confirm.html:21
+msgid "メールアドレス"
+msgstr ""
+
+#: templates/accounts/update.html:46 templates/regist.html:45
+#: templates/user_confirm.html:35
+msgid "性別"
+msgstr ""
+
+#: templates/accounts/update.html:53 templates/regist.html:52
+#: templates/user_confirm.html:50
+msgid "生年月日"
+msgstr ""
+
+#: templates/accounts/update.html:58 templates/regist.html:57
+#: templates/user_confirm.html:63
+msgid "国籍"
+msgstr ""
+
+#: templates/accounts/update.html:63 templates/regist.html:62
+#: templates/user_confirm.html:76
+msgid "自己紹介"
+msgstr ""
+
+#: templates/accounts/update.html:68 templates/regist.html:67
+#: templates/user_confirm.html:89
+msgid "職業"
+msgstr ""
+
+#: templates/accounts/update.html:73 templates/regist.html:72
+msgid "プロフィール写真"
+msgstr ""
+
+#: templates/accounts/update.html:78
+msgid "更新"
+msgstr ""
+
+#: templates/accounts/update_done.html:30
+msgid "アカウント情報を更新しました。"
+msgstr ""
+
+#: templates/accounts/update_done.html:31
+msgid "トップへ"
+msgstr ""
+
+#: templates/base.html:23
+msgid "マイページ"
+msgstr ""
+
+#: templates/base.html:24 templates/dashboard/article_form.html:23
+#: templates/dashboard/dashboard_detail.html:23
+#: templates/dashboard/dashboard_list.html:23
+msgid "掲示板"
+msgstr ""
+
+#: templates/base.html:25 templates/base.html:31
+msgid "ヘルプ"
+msgstr ""
+
+#: templates/base.html:29
+msgid "会員登録"
+msgstr ""
+
+#: templates/base.html:30 templates/user_login.html:7
+msgid "ログイン"
+msgstr ""
+
+#: templates/base.html:43
+msgid "ホーム"
+msgstr ""
+
+#: templates/base.html:44
+msgid "エリアから探す"
+msgstr ""
+
+#: templates/base.html:45
+msgid "お気に入りから探す"
+msgstr ""
+
+#: templates/base.html:55
+msgid "プライバシーポリシー"
+msgstr ""
+
+#: templates/base.html:56
+msgid "利用規約"
+msgstr ""
+
+#: templates/base.html:57
+msgid "東京都新宿区西新宿1-12-12 モード学園コクーンタワー"
+msgstr ""
+
+#: templates/base.html:62
+msgid "お問い合わせ"
+msgstr ""
+
+#: templates/dashboard/article_form.html:17
+#: templates/dashboard/dashboard_detail.html:17
+#: templates/dashboard/dashboard_list.html:17
+msgid "閲覧"
+msgstr ""
+
+#: templates/dashboard/article_form.html:18
+#: templates/dashboard/dashboard_detail.html:18
+#: templates/dashboard/dashboard_list.html:18
+msgid "投稿する"
+msgstr ""
+
+#: templates/dashboard/article_form.html:56
+msgid "作成"
+msgstr ""
+
+#: templates/dashboard/article_form.html:61
+#: templates/dashboard/dashboard_detail.html:49
+#: templates/dashboard/dashboard_list.html:52
+msgid "物件契約後、ご利用いただけます"
+msgstr ""
+
+#: templates/dashboard/dashboard_list.html:28
+msgid "タイトル"
+msgstr ""
+
+#: templates/dashboard/dashboard_list.html:29
+msgid "ユーザー"
+msgstr ""
+
+#: templates/dashboard/dashboard_list.html:30
+msgid "投稿日時"
+msgstr ""
+
+#: templates/dashboard/dashboard_list.html:47
+msgid "記事がありません。"
+msgstr ""
+
+#: templates/regist.html:9
+msgid "新規登録"
+msgstr ""
+
+#: templates/regist.html:21 templates/user_confirm.html:28
+msgid "パスワード"
+msgstr ""
+
+#: templates/regist.html:29
+msgid "パスワード（確認用）"
+msgstr ""
+
+#: templates/regist.html:77
+msgid "確認画面"
+msgstr ""
+
+#: templates/regist.html:80
+msgid "ログインはこちら"
+msgstr ""
+
+#: templates/stores/like_list.html:6
+msgid "お気に入り"
+msgstr ""
+
+#: templates/stores/like_list.html:6 templates/stores/property_list.html:6
+msgid "の賃貸一覧"
+msgstr ""
+
+#: templates/stores/like_list.html:8 templates/stores/property_list.html:8
+msgid "地域を選択する"
+msgstr ""
+
+#: templates/stores/like_list.html:9 templates/stores/property_list.html:9
+msgid "条件を指定する"
+msgstr ""
+
+#: templates/stores/like_list.html:14 templates/stores/property_list.html:14
+msgid "東京都-都心部"
+msgstr ""
+
+#: templates/stores/like_list.html:16 templates/stores/property_list.html:16
+msgid "千代田区"
+msgstr ""
+
+#: templates/stores/like_list.html:17 templates/stores/property_list.html:17
+msgid "中央区"
+msgstr ""
+
+#: templates/stores/like_list.html:18 templates/stores/property_list.html:18
+msgid "港区"
+msgstr ""
+
+#: templates/stores/like_list.html:19 templates/stores/property_list.html:19
+msgid "新宿区"
+msgstr ""
+
+#: templates/stores/like_list.html:20 templates/stores/property_list.html:20
+msgid "文京区"
+msgstr ""
+
+#: templates/stores/like_list.html:21 templates/stores/property_list.html:21
+msgid "渋谷区"
+msgstr ""
+
+#: templates/stores/like_list.html:25 templates/stores/like_list.html:153
+#: templates/stores/property_list.html:25
+#: templates/stores/property_list.html:153
+msgid "絞り込む"
+msgstr ""
+
+#: templates/stores/like_list.html:30 templates/stores/like_list.html:293
+#: templates/stores/property_detail.html:72
+#: templates/stores/property_detail_room.html:62
+#: templates/stores/property_list.html:30
+#: templates/stores/property_list.html:273
+msgid "賃料"
+msgstr ""
+
+#: templates/stores/like_list.html:33 templates/stores/property_list.html:33
+msgid "下限なし"
+msgstr ""
+
+#: templates/stores/like_list.html:34 templates/stores/like_list.html:61
+#: templates/stores/property_list.html:34
+#: templates/stores/property_list.html:61
+msgid "2万円"
+msgstr ""
+
+#: templates/stores/like_list.html:35 templates/stores/like_list.html:62
+#: templates/stores/property_list.html:35
+#: templates/stores/property_list.html:62
+msgid "3万円"
+msgstr ""
+
+#: templates/stores/like_list.html:36 templates/stores/like_list.html:63
+#: templates/stores/property_list.html:36
+#: templates/stores/property_list.html:63
+msgid "4万円"
+msgstr ""
+
+#: templates/stores/like_list.html:37 templates/stores/like_list.html:64
+#: templates/stores/property_list.html:37
+#: templates/stores/property_list.html:64
+msgid "5万円"
+msgstr ""
+
+#: templates/stores/like_list.html:38 templates/stores/like_list.html:65
+#: templates/stores/property_list.html:38
+#: templates/stores/property_list.html:65
+msgid "6万円"
+msgstr ""
+
+#: templates/stores/like_list.html:39 templates/stores/like_list.html:66
+#: templates/stores/property_list.html:39
+#: templates/stores/property_list.html:66
+msgid "7万円"
+msgstr ""
+
+#: templates/stores/like_list.html:40 templates/stores/like_list.html:67
+#: templates/stores/property_list.html:40
+#: templates/stores/property_list.html:67
+msgid "8万円"
+msgstr ""
+
+#: templates/stores/like_list.html:41 templates/stores/like_list.html:68
+#: templates/stores/property_list.html:41
+#: templates/stores/property_list.html:68
+msgid "9万円"
+msgstr ""
+
+#: templates/stores/like_list.html:42 templates/stores/like_list.html:69
+#: templates/stores/property_list.html:42
+#: templates/stores/property_list.html:69
+msgid "10万円"
+msgstr ""
+
+#: templates/stores/like_list.html:43 templates/stores/like_list.html:70
+#: templates/stores/property_list.html:43
+#: templates/stores/property_list.html:70
+msgid "12万円"
+msgstr ""
+
+#: templates/stores/like_list.html:44 templates/stores/like_list.html:71
+#: templates/stores/property_list.html:44
+#: templates/stores/property_list.html:71
+msgid "14万円"
+msgstr ""
+
+#: templates/stores/like_list.html:45 templates/stores/like_list.html:72
+#: templates/stores/property_list.html:45
+#: templates/stores/property_list.html:72
+msgid "16万円"
+msgstr ""
+
+#: templates/stores/like_list.html:46 templates/stores/like_list.html:73
+#: templates/stores/property_list.html:46
+#: templates/stores/property_list.html:73
+msgid "18万円"
+msgstr ""
+
+#: templates/stores/like_list.html:47 templates/stores/like_list.html:74
+#: templates/stores/property_list.html:47
+#: templates/stores/property_list.html:74
+msgid "20万円"
+msgstr ""
+
+#: templates/stores/like_list.html:48 templates/stores/like_list.html:75
+#: templates/stores/property_list.html:48
+#: templates/stores/property_list.html:75
+msgid "25万円"
+msgstr ""
+
+#: templates/stores/like_list.html:49 templates/stores/like_list.html:76
+#: templates/stores/property_list.html:49
+#: templates/stores/property_list.html:76
+msgid "30万円"
+msgstr ""
+
+#: templates/stores/like_list.html:50 templates/stores/like_list.html:77
+#: templates/stores/property_list.html:50
+#: templates/stores/property_list.html:77
+msgid "40万円"
+msgstr ""
+
+#: templates/stores/like_list.html:51 templates/stores/like_list.html:78
+#: templates/stores/property_list.html:51
+#: templates/stores/property_list.html:78
+msgid "50万円"
+msgstr ""
+
+#: templates/stores/like_list.html:52 templates/stores/like_list.html:79
+#: templates/stores/property_list.html:52
+#: templates/stores/property_list.html:79
+msgid "60万円"
+msgstr ""
+
+#: templates/stores/like_list.html:53 templates/stores/like_list.html:80
+#: templates/stores/property_list.html:53
+#: templates/stores/property_list.html:80
+msgid "70万円"
+msgstr ""
+
+#: templates/stores/like_list.html:54 templates/stores/like_list.html:81
+#: templates/stores/property_list.html:54
+#: templates/stores/property_list.html:81
+msgid "80万円"
+msgstr ""
+
+#: templates/stores/like_list.html:55 templates/stores/like_list.html:82
+#: templates/stores/property_list.html:55
+#: templates/stores/property_list.html:82
+msgid "90万円"
+msgstr ""
+
+#: templates/stores/like_list.html:56 templates/stores/like_list.html:83
+#: templates/stores/property_list.html:56
+#: templates/stores/property_list.html:83
+msgid "100万円"
+msgstr ""
+
+#: templates/stores/like_list.html:60 templates/stores/property_list.html:60
+msgid "上限なし"
+msgstr ""
+
+#: templates/stores/like_list.html:86 templates/stores/property_list.html:86
+msgid "管理費を含む"
+msgstr ""
+
+#: templates/stores/like_list.html:88
+#: templates/stores/property_detail_room.html:68
+#: templates/stores/property_list.html:88
+msgid "敷金/礼金"
+msgstr ""
+
+#: templates/stores/like_list.html:90 templates/stores/property_list.html:90
+msgid "カード決済可"
+msgstr ""
+
+#: templates/stores/like_list.html:94 templates/stores/like_list.html:294
+#: templates/stores/property_detail.html:73
+#: templates/stores/property_detail_room.html:90
+#: templates/stores/property_list.html:94
+#: templates/stores/property_list.html:274
+msgid "間取り"
+msgstr ""
+
+#: templates/stores/like_list.html:110 templates/stores/property_list.html:110
+msgid "駅から徒歩"
+msgstr ""
+
+#: templates/stores/like_list.html:113 templates/stores/like_list.html:129
+#: templates/stores/like_list.html:163 templates/stores/property_list.html:113
+#: templates/stores/property_list.html:129
+#: templates/stores/property_list.html:163
+msgid "指定なし"
+msgstr ""
+
+#: templates/stores/like_list.html:114 templates/stores/property_list.html:114
+msgid "1分以内"
+msgstr ""
+
+#: templates/stores/like_list.html:115 templates/stores/property_list.html:115
+msgid "3分以内"
+msgstr ""
+
+#: templates/stores/like_list.html:116 templates/stores/property_list.html:116
+msgid "5分以内"
+msgstr ""
+
+#: templates/stores/like_list.html:117 templates/stores/property_list.html:117
+msgid "7分以内"
+msgstr ""
+
+#: templates/stores/like_list.html:118 templates/stores/property_list.html:118
+msgid "10分以内"
+msgstr ""
+
+#: templates/stores/like_list.html:119 templates/stores/property_list.html:119
+msgid "15分以内"
+msgstr ""
+
+#: templates/stores/like_list.html:120 templates/stores/property_list.html:120
+msgid "20分以内"
+msgstr ""
+
+#: templates/stores/like_list.html:126
+#: templates/stores/property_detail_room.html:88
+#: templates/stores/property_list.html:126
+msgid "築年数"
+msgstr ""
+
+#: templates/stores/like_list.html:130 templates/stores/property_list.html:130
+msgid "3年以内"
+msgstr ""
+
+#: templates/stores/like_list.html:131 templates/stores/property_list.html:131
+msgid "5年以内"
+msgstr ""
+
+#: templates/stores/like_list.html:132 templates/stores/property_list.html:132
+msgid "7年以内"
+msgstr ""
+
+#: templates/stores/like_list.html:133 templates/stores/property_list.html:133
+msgid "10年以内"
+msgstr ""
+
+#: templates/stores/like_list.html:134 templates/stores/property_list.html:134
+msgid "15年以内"
+msgstr ""
+
+#: templates/stores/like_list.html:135 templates/stores/property_list.html:135
+msgid "20年以内"
+msgstr ""
+
+#: templates/stores/like_list.html:136 templates/stores/property_list.html:136
+msgid "25年以内"
+msgstr ""
+
+#: templates/stores/like_list.html:137 templates/stores/property_list.html:137
+msgid "30年以内"
+msgstr ""
+
+#: templates/stores/like_list.html:138 templates/stores/property_list.html:138
+msgid "35年以内"
+msgstr ""
+
+#: templates/stores/like_list.html:139 templates/stores/property_list.html:139
+msgid "40年以内"
+msgstr ""
+
+#: templates/stores/like_list.html:145 templates/stores/property_list.html:145
+msgid "物件種別"
+msgstr ""
+
+#: templates/stores/like_list.html:147 templates/stores/property_list.html:147
+msgid "マンション"
+msgstr ""
+
+#: templates/stores/like_list.html:148 templates/stores/property_list.html:148
+msgid "アパート"
+msgstr ""
+
+#: templates/stores/like_list.html:149 templates/stores/property_list.html:149
+msgid "寮"
+msgstr ""
+
+#: templates/stores/like_list.html:156 templates/stores/property_list.html:156
+msgid "件"
+msgstr ""
+
+#: templates/stores/like_list.html:157 templates/stores/property_list.html:157
+msgid "部屋ごとに表示"
+msgstr ""
+
+#: templates/stores/like_list.html:158 templates/stores/property_list.html:158
+msgid "物件ごとに表示"
+msgstr ""
+
+#: templates/stores/like_list.html:160 templates/stores/property_list.html:160
+msgid "並び替え"
+msgstr ""
+
+#: templates/stores/like_list.html:164 templates/stores/property_list.html:164
+msgid "賃料が高い順"
+msgstr ""
+
+#: templates/stores/like_list.html:165 templates/stores/property_list.html:165
+msgid "賃料が安い順"
+msgstr ""
+
+#: templates/stores/like_list.html:166 templates/stores/property_list.html:166
+msgid "おすすめ順"
+msgstr ""
+
+#: templates/stores/like_list.html:167 templates/stores/property_list.html:167
+msgid "築年数が新しい順"
+msgstr ""
+
+#: templates/stores/like_list.html:177 templates/stores/like_list.html:179
+#: templates/stores/like_list.html:324 templates/stores/like_list.html:326
+#: templates/stores/property_list.html:177
+#: templates/stores/property_list.html:179
+#: templates/stores/property_list.html:304
+#: templates/stores/property_list.html:306
+msgid "前へ"
+msgstr ""
+
+#: templates/stores/like_list.html:193 templates/stores/like_list.html:195
+#: templates/stores/like_list.html:340 templates/stores/like_list.html:342
+#: templates/stores/property_list.html:193
+#: templates/stores/property_list.html:195
+#: templates/stores/property_list.html:320
+#: templates/stores/property_list.html:322
+msgid "次へ"
+msgstr ""
+
+#: templates/stores/like_list.html:291 templates/stores/property_detail.html:70
+#: templates/stores/property_list.html:271
+msgid "部屋番号"
+msgstr ""
+
+#: templates/stores/like_list.html:292 templates/stores/property_detail.html:71
+#: templates/stores/property_detail_room.html:100
+#: templates/stores/property_list.html:272
+msgid "階数"
+msgstr ""
+
+#: templates/stores/like_list.html:295 templates/stores/property_detail.html:74
+#: templates/stores/property_list.html:275
+msgid "駐車場"
+msgstr ""
+
+#: templates/stores/like_list.html:303 templates/stores/property_detail.html:82
+#: templates/stores/property_detail_room.html:101
+#: templates/stores/property_list.html:283
+msgid "階"
+msgstr ""
+
+#: templates/stores/like_list.html:305 templates/stores/property_detail.html:84
+#: templates/stores/property_list.html:285
+msgid "万円"
+msgstr ""
+
+#: templates/stores/like_list.html:308 templates/stores/property_detail.html:87
+#: templates/stores/property_list.html:288
+msgid "有"
+msgstr ""
+
+#: templates/stores/like_list.html:308 templates/stores/property_detail.html:87
+#: templates/stores/property_list.html:288
+msgid "無"
+msgstr ""
+
+#: templates/stores/like_list.html:311 templates/stores/property_detail.html:90
+#: templates/stores/property_list.html:291
+msgid "詳細を見る"
+msgstr ""
+
+#: templates/stores/property_detail_room.html:45
+msgid "内見"
+msgstr ""
+
+#: templates/stores/property_detail_room.html:50
+#: templates/stores/property_detail_room.html:164
+#: templates/stores/purchase.html:38
+msgid "電話でのお問い合わせ"
+msgstr ""
+
+#: templates/stores/property_detail_room.html:60
+msgid "基本情報"
+msgstr ""
+
+#: templates/stores/property_detail_room.html:63
+#: templates/stores/property_detail_room.html:65
+msgid "円"
+msgstr ""
+
+#: templates/stores/property_detail_room.html:64
+msgid "管理費等"
+msgstr ""
+
+#: templates/stores/property_detail_room.html:70
+msgid "クレジット決済"
+msgstr ""
+
+#: templates/stores/property_detail_room.html:73
+msgid "可"
+msgstr ""
+
+#: templates/stores/property_detail_room.html:75
+msgid "不可"
+msgstr ""
+
+#: templates/stores/property_detail_room.html:80
+msgid "交通"
+msgstr ""
+
+#: templates/stores/property_detail_room.html:84
+msgid "所在地"
+msgstr ""
+
+#: templates/stores/property_detail_room.html:94
+msgid "種目"
+msgstr ""
+
+#: templates/stores/property_detail_room.html:96
+msgid "面積"
+msgstr ""
+
+#: templates/stores/property_detail_room.html:106
+msgid "設備/特徴"
+msgstr ""
+
+#: templates/stores/property_detail_room.html:108
+msgid "位置"
+msgstr ""
+
+#: templates/stores/property_detail_room.html:112
+msgid "入居条件"
+msgstr ""
+
+#: templates/stores/property_detail_room.html:120
+msgid "バス・トイレ"
+msgstr ""
+
+#: templates/stores/property_detail_room.html:128
+msgid "キッチン"
+msgstr ""
+
+#: templates/stores/property_detail_room.html:136
+msgid "設備・サービス"
+msgstr ""
+
+#: templates/stores/property_detail_room.html:144
+msgid "その他"
+msgstr ""
+
+#: templates/stores/property_detail_room.html:152
+msgid "備考"
+msgstr ""
+
+#: templates/stores/property_detail_room.html:168
+msgid "契約申請"
+msgstr ""
+
+#: templates/stores/property_list.html:6
+msgid "東京都"
+msgstr ""
+
+#: templates/stores/purchase.html:46
+msgid ""
+"申し込み用紙のダウンロードし、フォーマットに沿って情報を記入してください。"
+msgstr ""
+
+#: templates/stores/purchase.html:47
+msgid "ダウンロード用紙へのリンク"
+msgstr ""
+
+#: templates/stores/purchase.html:48
+msgid "入力が完了したら、申込み書と必要書類をアップロードしてください"
+msgstr ""
+
+#: templates/stores/purchase.html:55
+msgid "送信"
+msgstr ""
+
+#: templates/stores/success.html:9
+msgid "おめでとうございます！契約が完了しました。"
+msgstr ""
+
+#: templates/stores/success.html:10
+msgid "物件の確認、掲示板が利用可能になりました"
+msgstr ""
+
+#: templates/stores/success.html:11
+msgid "マイページはこちら"
+msgstr ""
+
+#: templates/success.html:6
+msgid "登録が完了しました"
+msgstr ""
+
+#: templates/success.html:7
+msgid "ご登録いただきありがとうございます。"
+msgstr ""
+
+#: templates/success.html:8
+msgid "様々な機能が利用できるようになりました。"
+msgstr ""
+
+#: templates/success.html:9
+msgid "トップページに戻る"
+msgstr ""
+
+#: templates/user_confirm.html:10
+msgid "入力した情報の確認"
+msgstr ""
+
+#: templates/user_confirm.html:39
+msgid "選択しない"
+msgstr ""
+
+#: templates/user_confirm.html:41
+msgid "男性"
+msgstr ""
+
+#: templates/user_confirm.html:43
+msgid "女性"
+msgstr ""
+
+#: templates/user_confirm.html:56 templates/user_confirm.html:69
+#: templates/user_confirm.html:82 templates/user_confirm.html:95
+#: templates/user_confirm.html:108
+msgid "未入力"
+msgstr ""
+
+#: templates/user_confirm.html:102
+msgid "プロフィール画像"
+msgstr ""
+
+#: templates/user_confirm.html:125
+msgid "登録"
+msgstr ""
+
+#: templates/user_login.html:10
+msgid "メールアドレスまたはパスワードが正しくありません。"
+msgstr ""
+
+#: templates/user_login.html:17
+msgid "ログイン状態を保持する"
+msgstr ""
+
+#: templates/user_login.html:21
+msgid "新規登録はこちら"
+msgstr ""

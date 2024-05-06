@@ -1,0 +1,133 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load i18n %}
+	<main class="confirm">
+		<div class="signup-form">
+		<form  form action="{% url 'accounts:user_confirm' %}" method="POST" enctype="multipart/form-data" novalidate>
+			{% csrf_token %}
+			{{ form.media }}
+			<div>
+				<p class="signup-name">{% trans "入力した情報の確認" %}</p>
+			</div>
+	
+	
+			<div class="signup-nav">
+				<label for="{{ form.username.id_for_label }}" class="signup-nav-name">{% trans "ニックネーム" %}</label>
+				<div class="confirm-container">
+				<p class="confirm-data">{{ form.username.data }}</p>
+				</div>
+			</div>
+			<div class="signup-nav">
+				<label for="{{ form.email.id_for_label }}" class="signup-nav-name">{% trans "メールアドレス" %}</label>
+				<div class="confirm-container">
+				<p class="confirm-data">{{ form.email.data }}</p>
+				</div>
+			</div>
+		
+			<div class="signup-nav">
+				<label for="{{ form.password1.id_for_label }}" class="signup-nav-name">{% trans "パスワード" %}</label>
+				<div class="confirm-container">
+				<p class="confirm-data">{% for _ in form.password1.data %}*{% endfor %}</p>
+				</div>
+			</div>
+
+			<div class="signup-nav">
+				<label for="{{ form.sex.id_for_label }}" class="signup-nav-name">{% trans "性別" %}</label>
+				<div class="confirm-container">
+					<p class="confirm-data">
+						{% if form.sex.data == 'N' %}
+							{% trans "選択しない" %}
+						{% elif form.sex.data == 'M' %}
+							{% trans "男性" %}
+						{% else %}
+							{% trans "女性" %}
+						{% endif %}
+					</p>
+				</div>
+			</div>
+	
+			<div class="signup-nav">
+				<label for="{{ form.birthday.id_for_label }}" class="signup-nav-name">{% trans "生年月日" %}</label>
+				<div class="confirm-container">
+					<p class="confirm-data">
+					{% if form.birthday.data %}
+					{{ form.birthday.data }}
+					{% else %}
+						{% trans "未入力" %}
+					{% endif %}
+					</p>
+				</div>
+			</div>
+			
+			<div class="signup-nav">
+				<label for="{{ form.nationality.id_for_label }}" class="signup-nav-name">{% trans "国籍" %}</label>
+				<div class="confirm-container">
+					<p class="confirm-data">
+						{% if form.nationality.data %}
+							{{ form.nationality.data }}
+						{% else %}
+							{% trans "未入力" %}
+						{% endif %}
+					</p>
+				</div>
+			</div>
+			
+			<div class="signup-nav">
+				<label for="{{ form.self_introduction.id_for_label }}" class="signup-nav-name">{% trans "自己紹介" %}</label>
+				<div class="confirm-container">
+					<p class="confirm-data">
+						{% if form.self_introduction.data %}
+							{{ form.self_introduction.data }}
+						{% else %}
+							{% trans "未入力" %}
+						{% endif %}
+					</p>
+				</div>
+			</div>
+			
+			<div class="signup-nav">
+				<label for="{{ form.job.id_for_label }}" class="signup-nav-name">{% trans "職業" %}</label>
+				<div class="confirm-container">
+					<p class="confirm-data">
+						{% if form.job.data %}
+							{{ form.job.data }}
+						{% else %}
+							{% trans "未入力" %}
+						{% endif %}
+					</p>
+				</div>
+			</div>
+			
+			<div class="signup-nav">
+				<label for="{{ form.profile_picture.id_for_label }}" class="signup-nav-name">{% trans "プロフィール画像" %}</label>
+				<div class="confirm-container">
+					<p class="confirm-data">
+						{% if form.profile_picture.data %}
+							{{ form.profile_picture.data }}
+						{% else %}
+							{% trans "未入力" %}
+						{% endif %}
+					</p>
+				</div>
+			</div>
+			
+		</form>
+		<div class="confirm-submit">
+			<div class="confirm-submit-inner">
+				<form method="post" action="{% url 'accounts:regist' %}" enctype="multipart/form-data">
+					{% csrf_token %}
+					{% for field in form %}{{ field.as_hidden }}{% endfor %}
+					<input type="submit" value="戻る" class="confirm-back-button">
+				</form>
+				<form method="post" action="{% url 'accounts:user_create' %}" enctype="multipart/form-data">
+					{% csrf_token %}
+					{% for field in form %}{{ field.as_hidden }}{% endfor %}
+					<input type="submit" value="{% trans "登録" %}" class="confirm-submit-button">
+				</form>
+			</div>
+		</div>
+	</div>
+	</main>
+</div>
+
+{% endblock %}

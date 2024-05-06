@@ -1,0 +1,59 @@
+{% extends 'base.html' %} {% load static %} {% load i18n %} {% block content %}
+<main class="detail">
+    <div class="area7">
+        <div class="detail-contact">
+            <div class="test01">
+                <ul class="slider-for">
+                    <li><img src="{{ object.layout_img.url }}" alt="image02"></li>
+                </ul>
+            </div>
+            <div class="detail-contact-ex">
+
+                <h3 class="detail-contact-name">{{ object.property.property_name }}{{ object.room_number }}</h3>
+                <div class="search-contact-content">
+                    <div class="search-contact-pin">
+                        <img src="{% static 'images/geo-alt-fill.svg' %}" alt="" class="search-contact-img2">
+                        <p>{{ object.property.address }}</p>
+                    </div>
+                    <div class="search-contact-pin">
+                        <img src="{% static 'images/train-front-fill.svg' %}" alt="" class="search-contact-img2">
+                        <p>{{ object.property.station }} {% trans "徒歩" %}{{ object.property.walk_minute }}{% trans "分" %}</p>
+                    </div>
+                    <div class="search-contact-pin">
+                        <img src="{% static 'images/check-square.svg' %}" alt="" class="search-contact-img2">
+                        <p>
+                            {% for condition in object.property.condition_set.all %}
+                            <span>{{ condition.condition }}&nbsp;</span> {% endfor %}
+                        </p>
+                    </div>
+                </div>
+
+                <div class="detail-phone">
+                    <img src="{% static 'images/telephone.svg' %}" alt="">
+                    <div class="detail-phone-txt">
+                        <p class="detail-phone-txt01">{% trans "電話でのお問い合わせ" %}</p>
+                        <p class="detail-phone-txt02">{{ object.property.phone_number }}</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <div class="contract-txt">
+            <p class="purchase-txt">{% trans "申し込み用紙のダウンロードし、フォーマットに沿って情報を記入してください。" %}</p>
+            <p class="test03"><a href="{% static "file/契約書.docx" %}" download="契約書.docx">[{% trans "用紙をダウンロード" %}]</a></p>
+            <p class="purchase-txt">{% trans "入力が完了したら、申込み書と必要書類をアップロードしてください" %}</p>
+            <form method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="contactnav">
+                    <input type="file" id="contract" name="contract" accept=".docx">
+                </div>
+                <div class="contract-example">
+                    <input type="submit" value="{% trans "送信" %}" class="contract-button">
+                </div>
+            </form>
+
+
+        </div>
+    </div>
+</main>
+{% endblock %}

@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load i18n %}
+<main  class="success">
+    <div class="success-container">
+        <p class="success-name">{% trans "登録が完了しました" %}</p>
+        <p class="success-text">{% trans "ご登録いただきありがとうございます。" %}<br>
+        {% trans "様々な機能が利用できるようになりました。" %}</p>
+        <a href="{% url "accounts:home" %}" class="success-top-button">{% trans "トップページに戻る" %}</a>
+    </div>
+</main>
+{% endblock %}
+

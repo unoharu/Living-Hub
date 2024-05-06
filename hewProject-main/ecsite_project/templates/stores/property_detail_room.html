@@ -1,0 +1,173 @@
+{% extends 'base_list.html' %} {% block content %} {% load static %} {% load i18n %}
+<main class="detail">
+
+    <div class="area7">
+        <div class="detail-contact">
+            <div class="test01">
+                <ul class="slider-for">
+                    <li>
+                        <a href="#"><img src="{{ object.property.picture_url.url }}" alt="image02"></a>
+                    </li>
+                    <li>
+                        <a href="#"><img src="{{ object.layout_img.url }}" alt="image02"></a>
+                    </li>
+                    {% for picture in object.propertypicture_set.all %}
+                    <li>
+                        <a href="#"><img src="{{ picture.picture.url }}" alt="image"></a>
+                    </li>
+                    {% endfor %}
+
+                </ul>
+                <ul class="slider-nav">
+                    <li>
+                        <a href="#"><img src="{{ object.property.picture_url.url}}" alt="image"></a>
+                    </li>
+                    <li>
+                        <a href="#"><img src="{{ object.layout_img.url }}" alt="image"></a>
+                    </li>
+                    {% for picture in object.propertypicture_set.all %}
+                    <li>
+                        <a href="#"><img src="{{ picture.picture.url }}" alt="image"></a>
+                    </li>
+                    {% endfor %}
+                </ul>
+            </div>
+            <div class="detail-contact-ex">
+
+                <h3 class="detail-contact-name">{{ object.property.property_name }}{{ object.room_number }}</h3>
+                <div class="search-contact-content">
+                    <div class="search-contact-pin">
+                        <img src="{% static 'images/geo-alt-fill.svg' %}" alt="" class="search-contact-img2">
+                        <p>{{ object.property.address }}</p>
+                    </div>
+                    <div class="search-contact-pin">
+                        <img src="{% static 'images/train-front-fill.svg' %}" alt="" class="search-contact-img2">
+                        <p>{{ object.property.station }} {% trans "徒歩" %}{{ object.property.walk_minute }}{% trans "分" %}</p>
+                    </div>
+                    <div class="search-contact-pin">
+                        <img src="{% static 'images/check-square.svg' %}" alt="" class="search-contact-img2">
+                        <p>
+                            {% for condition in object.property.condition_set.all %}
+                            <span>{{ condition.condition }}&nbsp;</span> {% endfor %}
+                        </p>
+                    </div>
+                </div>
+
+				<p class="test02"><a href="{{ object.property_tour_url }}" class="detail-3d" target="_blank">3D{% trans "内見" %}</a></p>
+
+                <div class="detail-phone">
+                    <img src="{% static 'images/telephone.svg' %}" alt="">
+                    <div class="detail-phone-txt">
+                        <p class="detail-phone-txt01">{% trans "電話でのお問い合わせ" %}</p>
+                        <p class="detail-phone-txt02">{{ object.property.phone_number }}</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="detail-basicinfo">
+            <table class="detail-basicinfo01">
+                <h1>{% trans "基本情報" %}</h1>
+                <tr class="detail-basicinfo021">
+                    <th class="basicinfo-txt">{% trans "賃料" %}</th>
+                    <td class="basicinfo-txt01">{{ object.rent }}{% trans "円" %}</td>
+                    <th class="basicinfo-txt">{% trans "管理費等" %}</th>
+                    <td class="basicinfo-txt01">{{ object.management_fee }}{% trans "円" %}</td>
+                </tr>
+                <tr class="detail-basicinfo021">
+                    <th class="basicinfo-txt">{% trans "敷金/礼金" %}</th>
+                    <td class="basicinfo-txt01">{{ object.property.deposit_key_money }}</td>
+                    <th class="basicinfo-txt">{% trans "クレジット決済" %}</th>
+                    <td class="basicinfo-txt01">
+                        {% if object.credit %} {% trans "可" %} {% else %} {% trans "不可" %} {% endif %}
+                    </td>
+                </tr>
+                <tr class="detail-basicinfo021">
+                    <th class="basicinfo-txt">{% trans "交通" %}</th>
+                    <td class="basicinfo-txt02">{{ object.property.station }} {% trans "徒歩" %}{{ object.property.walk_minute }}{% trans "分" %}</td>
+                </tr>
+                <tr class="detail-basicinfo021">
+                    <th class="basicinfo-txt">{% trans "所在地" %}</th>
+                    <td class="basicinfo-txt02">{{ object.property.address }}</td>
+                </tr>
+                <tr class="detail-basicinfo021">
+                    <th class="basicinfo-txt">{% trans "築年数" %}</th>
+                    <td class="basicinfo-txt01">{{ object.property.year_built }}年</td>
+                    <th class="basicinfo-txt">{% trans "間取り" %}</th>
+                    <td class="basicinfo-txt01">{{ object.layout }}</td>
+                </tr>
+                <tr class="detail-basicinfo021">
+                    <th class="basicinfo-txt">{% trans "種目" %}</th>
+                    <td class="basicinfo-txt01">{{ object.property.property_type }}</td>
+                    <th class="basicinfo-txt">{% trans "面積" %}</th>
+                    <td class="basicinfo-txt01">{{ object.area }}m²</td>
+                </tr>
+                <tr class="detail-basicinfo021">
+                    <th class="basicinfo-txt">{% trans "階数" %}</th>
+                    <td class="basicinfo-txt02">{{ object.floor }}{% trans "階" %}</td>
+                </tr>
+            </table>
+
+            <table class="detail-basicinfo01">
+                <h1>{% trans "設備/特徴" %}</h1>
+                <tr class="detail-basicinfo021">
+                    <th class="basicinfo-txt">{% trans "位置" %}</th>
+                    <td class="basicinfo-txt02">{{ object.position }}</td>
+                </tr>
+                <tr class="detail-basicinfo021">
+                    <th class="basicinfo-txt">{% trans "入居条件" %}</th>
+                    <td class="basicinfo-txt02">
+                        {% for condition in object.property.condition_set.all %}
+                        <span>{{ condition.condition }}&nbsp;</span> {% endfor %}
+                    </td>
+                </tr>
+                <tr class="detail-basicinfo021">
+                    <th class="basicinfo-txt">{% trans "バス・トイレ" %}</th>
+                    <td class="basicinfo-txt02">
+                        {% for bathroom in object.bathroom_set.all %}
+                        <span>{{ bathroom.bathroom }}&nbsp;</span> {% endfor %}
+                    </td>
+                </tr>
+                <tr class="detail-basicinfo021">
+                    <th class="basicinfo-txt">{% trans "キッチン" %}</th>
+                    <td class="basicinfo-txt02">
+                        {% for kitchen in object.kitchen_set.all %}
+                        <span>{{ kitchen.kitchen }}&nbsp;</span> {% endfor %}
+                    </td>
+                </tr>
+                <tr class="detail-basicinfo021">
+                    <th class="basicinfo-txt">{% trans "設備・サービス" %}</th>
+                    <td class="basicinfo-txt02">
+                        {% for service in object.service_set.all %}
+                        <span>{{ service.service }}&nbsp;</span> {% endfor %}
+                    </td>
+                </tr>
+                <tr class="detail-basicinfo021">
+                    <th class="basicinfo-txt">{% trans "その他" %}</th>
+                    <td class="basicinfo-txt02">
+                        {% for other in object.other_set.all %}
+                        <span>{{ other.other }}&nbsp;</span> {% endfor %}
+                    </td>
+                </tr>
+                <tr class="detail-basicinfo021">
+                    <th class="basicinfo-txt">{% trans "備考" %}</th>
+                    <td class="basicinfo-txt02">{{ object.remarks }}</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</main>
+<div class="purchase-container">
+    <div class="detail-purchase">
+        <div class="purchase-phone">
+            <img src="{% static 'images/telephone.svg' %}" alt="">
+            <div class="detail-phone-txt">
+                <p class="detail-phone-txt01">{% trans "電話でのお問い合わせ" %}</p>
+                <p class="detail-phone-txt02">{{ object.property.phone_number }}</p>
+            </div>
+        </div>
+        <p class="test02"><a href="{% url "stores:purchase"  pk=object.id %}" class="purchase-link">{% trans "契約申請" %}</a></p>
+    </div>
+</div>
+{% endblock %}

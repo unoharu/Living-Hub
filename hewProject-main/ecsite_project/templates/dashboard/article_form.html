@@ -1,0 +1,64 @@
+{% extends 'base.html' %} {% block content %} {% load static %} {% load i18n %}
+<main class="mypage">
+    <div class="mypage-wrap">
+        <div class="mypage-container">
+            <ul class="mypage-tab">
+                <li class="mypage-profile">
+                    {% if user.profile_picture %}
+                    <img src="{{ user.profile_picture.url }}" alt="" class="profile-picture"> {% else %}
+                    <img src="{% static "images/person-circle.svg" %}" alt="" class="profile-picture"> {% endif %}
+                    <p class="tab-username">{{ user.username }}</p>
+                </li>
+                <li><a href="{% url "dashboard:dashboard_list" %}">{% trans "閲覧" %}</a></li>
+                <li><a href="{% url "dashboard:article_create" %}" class="mypage-tab-current">{% trans "投稿する" %}</a></li>
+            </ul>
+
+            <div class="contents">
+                <div class="mypage-contents">
+                    <h2 class="heading">{{ user.contract_property }}&nbsp;{% trans "掲示板" %}</h2>
+                    <div class="dashboard-detail-wrap">
+                        <div class="create-form">
+                            {% if user.contract_property %}
+                            <form method="post" enctype="multipart/form-data" novalidate>
+                                {% csrf_token %}
+                                <div class="dashboard-form">
+                                    <label for="{{ form.title.id_for_label }}"  class="form1">{{ form.title.label }}</label>
+                                    <p>{{ form.title }}</p>
+                                    {% if form.title.errors %}
+                                    <ul>
+                                        {% for error in form.title.errors %}
+                                        <li class="error1">{{ error }}</li>
+                                        {% endfor %}
+                                    </ul>
+                                    {% endif %}
+                                </div>
+                                <div class="dashboard-form">
+                                    <label for="{{ form.comment.id_for_label }}" class="form1">{{ form.comment.label }}</label>
+                                    <p>{{ form.comment }}</p>
+                                    {% if form.comment.errors %}
+                                    <ul>
+                                        {% for error in form.comment.errors %}
+                                        <li class="error1">{{ error }}</li>
+                                        {% endfor %}
+                                    </ul>
+                                    {% endif %}
+                                </div>
+                                <div>
+                                    {{ form.dashboard_picture.label_tag }} {{ form.dashboard_picture }}
+                                </div>
+                                <div class="dashboard-submit">
+                                    <input type="submit" value="{% trans " 作成 " %}">
+                                </div>
+                            </form>
+
+                            {% else %}
+                            <h2>{% trans "物件契約後、ご利用いただけます" %}</h2>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+{% endblock %}

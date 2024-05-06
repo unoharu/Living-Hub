@@ -1,0 +1,90 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load static %}
+{% load i18n %}
+<main class="mypage">
+    <div class="mypage-wrap">
+        <div class="mypage-container">
+            <ul class="mypage-tab">
+                <li class="mypage-profile">
+                    {% if user.profile_picture %}
+                    <img src="{{ user.profile_picture.url }}" alt="" class="profile-picture">
+                    {% else %}
+                    <img src="{% static "images/person-circle.svg" %}" alt="" class="profile-picture">
+                    {% endif %}
+                    <p class="tab-username">{{ user.username }}</p>
+                </li>
+                <li><a href="{% url 'accounts:user' %}" class="">{% trans "マイページTOP" %}</a></li>
+                <li><a href="{% url 'accounts:update' %}" class="">{% trans "プロフィール編集" %}</a></li>
+                <li><a href="{% url 'accounts:password_change' %}" class="">{% trans "パスワードの変更" %}</a></li>
+                <li><a href="{% url 'accounts:my_property' %}" class="mypage-tab-current">{% trans "契約物件情報" %}</a></li>
+                <li><a href="{% url 'accounts:logout' %}" class="">{% trans "ログアウト" %}</a></li>
+            </ul>
+
+            <div class="contents">
+                <div class="mypage-contents">
+                    <h2 class="heading">{% trans "契約物件情報" %}</h2>
+                    <div class="mypage-property-container">
+                        {% if user.contract_property %}
+                        <div class="mypage-property">
+                            <div class="mypage-contract-property">
+                                <img src="{{ user.contract_property.picture_url.url }}" alt=""  class="search-contact-img">
+                            </div>
+                            <div class="search-contact-ex">
+                                <div class="search-heart">
+                                    <h3 class="mypage-name">{{ user.contract_property }}</h3>
+                                </div>
+        
+                                <div class="search-contact-content">
+                                    <div class="search-contact-pin">
+                                        <img src="{% static 'images/geo-alt-fill.svg' %}" alt="" class="search-contact-img2">
+                                        <p>{{ user.contract_property.address }}</p>
+                                    </div>
+                                    <div class="search-contact-pin">
+                                        <img src="{% static 'images/train-front-fill.svg' %}" alt="" class="search-contact-img2">
+                                        <p>{{ user.contract_property.station }} {% trans "徒歩" %}{{ user.contract_property.walk_minute }}{% trans "分" %}</p>
+                                    </div>
+                                    <div class="search-contact-pin">
+                                        <img src="{% static 'images/check-square.svg' %}" alt="" class="search-contact-img2">
+                                        <p>
+                                            {% for condition in user.contract_property.condition_set.all %}
+                                                <span>{{ condition.condition }}&nbsp;</span>
+                                            {% endfor %}
+                                        </p>
+                                    </div>
+                                </div>
+                                <ul class="slider">
+                                    {% for review in user.contract_property.review_set.all %}
+                                    <li class="slider-item">
+                                        <div class="search-contact-com">
+                                            <h3>{% trans "居住者の声" %}</h3>
+                                            <p class="comment-name">{% trans "ニックネーム" %}：{{ review.user.username }}</p>
+                                            <div class="comment-container">
+                                                <p class="comment">{{ review.review_content }}</p>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    {% empty %}
+                                    <li class="slider-item">
+                                        <div class="search-contact-com">
+                                            <h3>{% trans "居住者の声" %}</h3>
+                                            <p class="comment-name">{% trans "ニックネーム" %}：管理者</p>
+                                            <div class="comment-container">
+                                                <p class="comment">まだレビューがありません</p>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    {% endfor %}
+                                </ul>
+                            </div>
+                        </div>
+                        {% else %}
+                        <h2>{% trans "契約している物件はありません" %}</h2>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+{% endblock %}

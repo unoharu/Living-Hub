@@ -1,0 +1,75 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load i18n %}
+{% block content %}
+<main class="mypage">
+    <div class="mypage-wrap">
+        <div class="mypage-container">
+            <ul class="mypage-tab">
+                <li class="mypage-profile">
+                    {% if user.profile_picture %}
+                    <img src="{{ user.profile_picture.url }}" alt="" class="profile-picture">
+                    {% else %}
+                    <img src="{% static "images/person-circle.svg" %}" alt="" class="profile-picture">
+                    {% endif %}
+                    <p class="tab-username">{{ user.username }}</p>
+                </li>
+                <li><a href="{% url 'accounts:user' %}" class="mypage-tab-current">{% trans "マイページTOP" %}</a></li>
+                <li><a href="{% url 'accounts:update' %}" class="">{% trans "プロフィール編集" %}</a></li>
+                <li><a href="{% url 'accounts:password_change' %}" class="">{% trans "パスワードの変更" %}</a></li>
+                <li><a href="{% url 'accounts:my_property' %}" class="">{% trans "契約物件情報" %}</a></li>
+                <li><a href="{% url 'accounts:logout' %}" class="">{% trans "ログアウト" %}</a></li>
+            </ul>
+
+            <div class="contents">
+                <div id="tab1" class="mypage-contents">
+                    <h2 class="heading">{% trans "マイページTOP" %}</h2>
+                    <ul class="mypage-inner">
+                        <div class="mypage-inner1">
+                            <a href="{% url 'accounts:update' %}" class="mypage-link">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="7vw" height="7vh" fill="currentColor"
+                                    class="bi bi-person" viewBox="0 0 16 16">
+                                    <path
+                                        d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6Zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0Zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4Zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10Z" />
+                                </svg>
+                                <p class="mypage-top-text">{% trans "プロフィール編集" %}</p>
+                            </a>
+                            
+                            <a href="{% url 'accounts:password_change' %}" class="mypage-link">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="7vw" height="7vh" fill="currentColor"
+                                    class="bi bi-key" viewBox="0 0 16 16">
+                                    <path
+                                        d="M0 8a4 4 0 0 1 7.465-2H14a.5.5 0 0 1 .354.146l1.5 1.5a.5.5 0 0 1 0 .708l-1.5 1.5a.5.5 0 0 1-.708 0L13 9.207l-.646.647a.5.5 0 0 1-.708 0L11 9.207l-.646.647a.5.5 0 0 1-.708 0L9 9.207l-.646.647A.5.5 0 0 1 8 10h-.535A4 4 0 0 1 0 8zm4-3a3 3 0 1 0 2.712 4.285A.5.5 0 0 1 7.163 9h.63l.853-.854a.5.5 0 0 1 .708 0l.646.647.646-.647a.5.5 0 0 1 .708 0l.646.647.646-.647a.5.5 0 0 1 .708 0l.646.647.793-.793-1-1h-6.63a.5.5 0 0 1-.451-.285A3 3 0 0 0 4 5z" />
+                                    <path d="M4 8a1 1 0 1 1-2 0 1 1 0 0 1 2 0z" />
+                                </svg>
+                                <p class="mypage-top-text">{% trans "パスワードの変更" %}</p>
+                            </a>
+                        </div>
+
+
+                        <div class="mypage-inner2">
+                            <a href="{% url 'accounts:my_property' %}" class="mypage-link">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="7vw" height="7vh" fill="currentColor"
+                                    class="bi bi-house" viewBox="0 0 16 16">
+                                    <path
+                                        d="M8.707 1.5a1 1 0 0 0-1.414 0L.646 8.146a.5.5 0 0 0 .708.708L2 8.207V13.5A1.5 1.5 0 0 0 3.5 15h9a1.5 1.5 0 0 0 1.5-1.5V8.207l.646.647a.5.5 0 0 0 .708-.708L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293L8.707 1.5ZM13 7.207V13.5a.5.5 0 0 1-.5.5h-9a.5.5 0 0 1-.5-.5V7.207l5-5 5 5Z" />
+                                </svg>
+                                <p class="mypage-top-text">{% trans "契約物件情報" %}</p>
+                            </a>
+
+                            <a href="{% url 'accounts:logout' %}" class="mypage-link">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="7vw" height="7vh" fill="currentColor"
+                                    class="bi bi-reply" viewBox="0 0 16 16">
+                                    <path
+                                        d="M6.598 5.013a.144.144 0 0 1 .202.134V6.3a.5.5 0 0 0 .5.5c.667 0 2.013.005 3.3.822.984.624 1.99 1.76 2.595 3.876-1.02-.983-2.185-1.516-3.205-1.799a8.74 8.74 0 0 0-1.921-.306 7.404 7.404 0 0 0-.798.008h-.013l-.005.001h-.001L7.3 9.9l-.05-.498a.5.5 0 0 0-.45.498v1.153c0 .108-.11.176-.202.134L2.614 8.254a.503.503 0 0 0-.042-.028.147.147 0 0 1 0-.252.499.499 0 0 0 .042-.028l3.984-2.933zM7.8 10.386c.068 0 .143.003.223.006.434.02 1.034.086 1.7.271 1.326.368 2.896 1.202 3.94 3.08a.5.5 0 0 0 .933-.305c-.464-3.71-1.886-5.662-3.46-6.66-1.245-.79-2.527-.942-3.336-.971v-.66a1.144 1.144 0 0 0-1.767-.96l-3.994 2.94a1.147 1.147 0 0 0 0 1.946l3.994 2.94a1.144 1.144 0 0 0 1.767-.97v-.667z" />
+                                </svg>
+                                <p class="mypage-top-text">{% trans "ログアウト" %}</p>
+                            </a>
+                        </div>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+{% endblock %}

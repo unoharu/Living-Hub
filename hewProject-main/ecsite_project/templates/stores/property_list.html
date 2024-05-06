@@ -1,0 +1,504 @@
+{% extends "base_list.html" %}
+{% block content %}
+{% load static %}
+{% load i18n %}
+<main class="search">
+    <h2 class="search-title"><span>{% trans "東京都" %}</span>{% trans "の賃貸一覧" %}</h2>
+    <div class="button-space">
+        <button id="btn" class="dialog-button">{% trans "地域を選択する" %}<img src="{% static "images/chevron-compact-down.svg" %}" alt=""></button>
+        <button id="btn1" class="dialog-button1">{% trans "条件を指定する" %}<img src="{% static "images/chevron-compact-down.svg" %}" alt=""></button>
+    </div>
+    <form action="{% url "stores:property_list" %}" method="get" id="sortForm">
+        <dialog id="dialog" class="search-dialog">
+            <div class="search-dialogin">
+                <h2>{% trans "東京都-都心部" %}</h2>
+                <div class="ku1">
+                    <div class="area-contaner">
+                        <label for="chiyoda"><input class="region-formin1" type="checkbox" name="area" id="chiyoda" value="1" {% if "1" in selected_areas %}checked{% endif %}>{% trans "千代田区" %}</label>
+                        <label for="tyuo"><input class="region-formin1" type="checkbox" name="area" id="tyuo" value="2" {% if "2" in selected_areas %}checked{% endif %}>{% trans "中央区" %}</label>
+                        <label for="minato"><input class="region-formin1" type="checkbox" name="area" id="minato" value="5" {% if "5" in selected_areas %}checked{% endif %}>{% trans "港区" %}</label>
+                    </div>
+                    <div class="ku2">
+                        <label for="sinjuku"><input class="region-formin1" type="checkbox" name="area" id="sinjuku" value="3" {% if "3" in selected_areas %}checked{% endif %}>{% trans "新宿区" %}</label>
+                        <label for="bunkyo"><input class="region-formin1" type="checkbox" name="area" id="bunkyo" value="4" {% if "4" in selected_areas %}checked{% endif %}>{% trans "文京区" %}</label>
+                        <label for="sibuya"><input class="region-formin1" type="checkbox" name="area" id="sibuya" value="6" {% if "6" in selected_areas %}checked{% endif %}>{% trans "渋谷区" %}</label>
+                    </div>
+                </div>
+            </div>
+            <br>
+            <button type="submit" class="search-button0">{% trans "絞り込む" %}</button>
+        </dialog>
+
+        <dialog id="dialog1" class="search-dialog1">
+            <div class="search-condinfo01">
+                <h2>{% trans "賃料" %}</h2>
+                <div class="cond-form">
+                    <div class="price-container">
+                        <select name="low_price">
+                            <option value="">{% trans "下限なし" %}</option>
+                            <option value="20000" {% if "20000" in low_price %}selected{% endif %}>{% trans "2万円" %}</option>
+                            <option value="30000" {% if "30000" in low_price %}selected{% endif %}>{% trans "3万円" %}</option>
+                            <option value="40000" {% if "40000" in low_price %}selected{% endif %}>{% trans "4万円" %}</option>
+                            <option value="50000" {% if "50000" in low_price %}selected{% endif %}>{% trans "5万円" %}</option>
+                            <option value="60000" {% if "60000" in low_price %}selected{% endif %}>{% trans "6万円" %}</option>
+                            <option value="70000" {% if "70000" in low_price %}selected{% endif %}>{% trans "7万円" %}</option>
+                            <option value="80000" {% if "80000" in low_price %}selected{% endif %}>{% trans "8万円" %}</option>
+                            <option value="90000" {% if "90000" in low_price %}selected{% endif %}>{% trans "9万円" %}</option>
+                            <option value="100000" {% if "100000" in low_price %}selected{% endif %}>{% trans "10万円" %}</option>
+                            <option value="120000" {% if "120000" in low_price %}selected{% endif %}>{% trans "12万円" %}</option>
+                            <option value="140000" {% if "140000" in low_price %}selected{% endif %}>{% trans "14万円" %}</option>
+                            <option value="160000" {% if "160000" in low_price %}selected{% endif %}>{% trans "16万円" %}</option>
+                            <option value="180000" {% if "180000" in low_price %}selected{% endif %}>{% trans "18万円" %}</option>
+                            <option value="200000" {% if "200000" in low_price %}selected{% endif %}>{% trans "20万円" %}</option>
+                            <option value="250000" {% if "250000" in low_price %}selected{% endif %}>{% trans "25万円" %}</option>
+                            <option value="300000" {% if "300000" in low_price %}selected{% endif %}>{% trans "30万円" %}</option>
+                            <option value="400000" {% if "400000" in low_price %}selected{% endif %}>{% trans "40万円" %}</option>
+                            <option value="500000" {% if "500000" in low_price %}selected{% endif %}>{% trans "50万円" %}</option>
+                            <option value="600000" {% if "600000" in low_price %}selected{% endif %}>{% trans "60万円" %}</option>
+                            <option value="700000" {% if "700000" in low_price %}selected{% endif %}>{% trans "70万円" %}</option>
+                            <option value="800000" {% if "800000" in low_price %}selected{% endif %}>{% trans "80万円" %}</option>
+                            <option value="900000" {% if "900000" in low_price %}selected{% endif %}>{% trans "90万円" %}</option>
+                            <option value="1000000" {% if "1000000" in low_price %}selected{% endif %}>{% trans "100万円" %}</option>
+                        </select>
+                        <span>~</span>
+                        <select name="high_price">
+                            <option value="">{% trans "上限なし" %}</option>
+                            <option value="20000" {% if "20000" in high_price %}selected{% endif %}>{% trans "2万円" %}</option>
+                            <option value="30000" {% if "30000" in high_price %}selected{% endif %}>{% trans "3万円" %}</option>
+                            <option value="40000" {% if "40000" in high_price %}selected{% endif %}>{% trans "4万円" %}</option>
+                            <option value="50000" {% if "50000" in high_price %}selected{% endif %}>{% trans "5万円" %}</option>
+                            <option value="60000" {% if "60000" in high_price %}selected{% endif %}>{% trans "6万円" %}</option>
+                            <option value="70000" {% if "70000" in high_price %}selected{% endif %}>{% trans "7万円" %}</option>
+                            <option value="80000" {% if "80000" in high_price %}selected{% endif %}>{% trans "8万円" %}</option>
+                            <option value="90000" {% if "90000" in high_price %}selected{% endif %}>{% trans "9万円" %}</option>
+                            <option value="100000" {% if "100000" in high_price %}selected{% endif %}>{% trans "10万円" %}</option>
+                            <option value="120000" {% if "120000" in high_price %}selected{% endif %}>{% trans "12万円" %}</option>
+                            <option value="140000" {% if "140000" in high_price %}selected{% endif %}>{% trans "14万円" %}</option>
+                            <option value="160000" {% if "160000" in high_price %}selected{% endif %}>{% trans "16万円" %}</option>
+                            <option value="180000" {% if "180000" in high_price %}selected{% endif %}>{% trans "18万円" %}</option>
+                            <option value="200000" {% if "200000" in high_price %}selected{% endif %}>{% trans "20万円" %}</option>
+                            <option value="250000" {% if "250000" in high_price %}selected{% endif %}>{% trans "25万円" %}</option>
+                            <option value="300000" {% if "300000" in high_price %}selected{% endif %}>{% trans "30万円" %}</option>
+                            <option value="400000" {% if "400000" in high_price %}selected{% endif %}>{% trans "40万円" %}</option>
+                            <option value="500000" {% if "500000" in high_price %}selected{% endif %}>{% trans "50万円" %}</option>
+                            <option value="600000" {% if "600000" in high_price %}selected{% endif %}>{% trans "60万円" %}</option>
+                            <option value="700000" {% if "700000" in high_price %}selected{% endif %}>{% trans "70万円" %}</option>
+                            <option value="800000" {% if "800000" in high_price %}selected{% endif %}>{% trans "80万円" %}</option>
+                            <option value="900000" {% if "900000" in high_price %}selected{% endif %}>{% trans "90万円" %}</option>
+                            <option value="1000000" {% if "1000000" in high_price %}selected{% endif %}>{% trans "100万円" %}</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label for="managementFee"><input class="cond-formin01" type="checkbox" name="price" id="managementFee" value="managementFeeValue" {% if "managementFeeValue" in price_options %}checked{% endif %}>
+                        {% trans "管理費を含む" %}</label>
+                        <label for="depositKeyMoney"><input class="cond-formin01" type="checkbox" name="price" id="depositKeyMoney" value="depositKeyMoneyValue" {% if "depositKeyMoneyValue" in price_options %}checked{% endif %}>
+                        {% trans "敷金/礼金" %}</label>
+                        <label for="credit"><input class="cond-formin01" type="checkbox" name="price" id="credit" value="creditValue" {% if "creditValue" in price_options %}checked{% endif %}>
+                        {% trans "カード決済可" %}</label>  
+                    </div>  
+                </div>
+            </div>
+            <div class="search-condinfo01">
+                <h2>{% trans "間取り" %}</h2>
+                <div class="cond-form">
+                    <div class="layout-contaner">
+                        <label for="layout1r"><input class="cond-formin01" type="checkbox" name="layout" id="layout1r" value="1R" {% if "1R" in selected_layout %}checked{% endif %}>1R</label>
+                        <label for="layout1k"><input class="cond-formin01" type="checkbox" name="layout" id="layout1k" value="1K" {% if "1K" in selected_layout %}checked{%endif %}>1K</label>
+                        <label for="layout1dk"><input class="cond-formin01" type="checkbox" name="layout" id="layout1dk" value="1DK" {% if "1DK" in selected_layout %}checked{% endif %}>1DK</label>
+                        <label for="layout1ldk"><input class="cond-formin01" type="checkbox" name="layout" id="layout1ldk" value="1LDK" {% if "1LDK" in selected_layout %}checked{% endif %}>1LDK</label>
+                        <label for="layout2k"><input class="cond-formin01" type="checkbox" name="layout" id="layout2k" value="2K" {% if "2K" in selected_layout %}checked{% endif %}>2K</label>
+                    </div>
+                    <div>
+                        <label for="layout2dk"><input class="cond-formin01" type="checkbox" name="layout" id="layout2dk" value="2DK" {% if "2DK" in selected_layout %}checked{% endif %}>2DK</label>
+                        <label for="layout2ldk"><input class="cond-formin01" type="checkbox" name="layout" id="layout2ldk" value="2LDK" {% if "2LDK" in selected_layout %}checked{% endif %}>2LDK</label>
+                        <label for="layout3k"><input class="cond-formin01" type="checkbox" name="layout" id="layout3k" value="3K" {% if "3K" in selected_layout %}checked{% endif %}>3K</label>
+                        <label for="layout3dk"><input class="cond-formin01" type="checkbox" name="layout" id="layout3dk" value="3DK" {% if "3DK" in selected_layout %}checked{% endif %}>3DK</label>
+                        <label for="layout3ldk"><input class="cond-formin01" type="checkbox" name="layout" id="layout3ldk" value="3LDK" {% if "3LDK" in selected_layout %}checked{% endif %}>3LDK</label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="search-condinfo01">
+                <h2>{% trans "駅から徒歩" %}</h2>
+                <div class="cond-form01">
+                    <select name="walkMinute">
+                        <option value="">{% trans "指定なし" %}</option>
+                        <option value="1" {% if "1" in selected_minute %}selected{% endif %}>{% trans "1分以内" %}</option>
+                        <option value="3" {% if "3" in selected_minute %}selected{% endif %}>{% trans "3分以内" %}</option>
+                        <option value="5" {% if "5" in selected_minute %}selected{% endif %}>{% trans "5分以内" %}</option>
+                        <option value="7" {% if "7" in selected_minute %}selected{% endif %}>{% trans "7分以内" %}</option>
+                        <option value="10" {% if "10" in selected_minute %}selected{% endif %}>{% trans "10分以内" %}</option>
+                        <option value="15" {% if "15" in selected_minute %}selected{% endif %}>{% trans "15分以内" %}</option>
+                        <option value="20" {% if "20" in selected_minute %}selected{% endif %}>{% trans "20分以内" %}</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="search-condinfo01">
+                <h2>{% trans "築年数" %}</h2>
+                <div class="cond-form01">
+                    <select name="yearBuilt">
+                        <option value="">{% trans "指定なし" %}</option>
+                        <option value="3" {% if "3" in selected_years %}selected{% endif %}>{% trans "3年以内" %}</option>
+                        <option value="5" {% if "5" in selected_years %}selected{% endif %}>{% trans "5年以内" %}</option>
+                        <option value="7" {% if "7" in selected_years %}selected{% endif %}>{% trans "7年以内" %}</option>
+                        <option value="10" {% if "10" in selected_years %}selected{% endif %}>{% trans "10年以内" %}</option>
+                        <option value="15" {% if "15" in selected_years %}selected{% endif %}>{% trans "15年以内" %}</option>
+                        <option value="20" {% if "20" in selected_years %}selected{% endif %}>{% trans "20年以内" %}</option>
+                        <option value="25" {% if "25" in selected_years %}selected{% endif %}>{% trans "25年以内" %}</option>
+                        <option value="30" {% if "30" in selected_years %}selected{% endif %}>{% trans "30年以内" %}</option>
+                        <option value="35" {% if "35" in selected_years %}selected{% endif %}>{% trans "35年以内" %}</option>
+                        <option value="40" {% if "40" in selected_years %}selected{% endif %}>{% trans "40年以内" %}</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="search-condinfo01">
+                <h2>{% trans "物件種別" %}</h2>
+                <div class="cond-form">
+                    <label for="mansion"><input class="cond-formin01" type="checkbox" name="type" id="mansion" value="1" {% if "1" in selected_type %}checked{% endif %}>{% trans "マンション" %}</label>
+                    <label for="apartment"><input class="cond-formin01" type="checkbox" name="type" id="apartment" value="3" {% if "3" in selected_type %}checked{% endif %}>{% trans "アパート" %}</label>
+                    <label for="dormitory"><input class="cond-formin01" type="checkbox" name="type" id="dormitory" value="2" {% if "2" in selected_type %}checked{% endif %}>{% trans "寮" %}</label>
+                </div>
+            </div>
+
+        <button type="submit" class="search-button1">{% trans "絞り込む" %}</button>
+        </dialog>
+        <ul class="tab5">
+            <p class="tab-number">{{ total_items }}{% trans "件" %}</p>
+            <li><a href="#" id="show-room-link" class="tab-current">{% trans "部屋ごとに表示" %}</a></li>
+            <li><a href="#" id="show-property-link" class="">{% trans "物件ごとに表示" %}</a></li>
+            <div class="tab-accordion">
+                <p>{% trans "並び替え" %}</p>
+                <div class="tab-form">
+                    <select name="sort" id="sort">
+                        <option value="" {% if request.GET.sort == "" %} selected {% endif %}>{% trans "指定なし" %}</option>
+                        <option value="price_high" {% if request.GET.sort == "price_high" %} selected {% endif %}>{% trans "賃料が高い順" %}</option>
+                        <option value="price_low" {% if request.GET.sort == "price_low" %} selected {% endif %}>{% trans "賃料が安い順" %}</option>
+                        <option value="rate" {% if request.GET.sort == "rate" %} selected {% endif %}>{% trans "おすすめ順" %}</option>
+                        <option value="year_built" {% if request.GET.sort == "year_built" %} selected {% endif %}>{% trans "築年数が新しい順" %}</option>
+                    </select>
+                </div>
+            </div>
+        </ul>
+    </form>
+    <div class="pagination">
+        <span class="step-links">
+            {% if page_obj.has_previous %}
+                {% if page_obj.previous_page_number == 1 %}
+                    <a href="?page=1{% if property_type_name %}&property_type_name={{ property_type_name }}{% endif %}{% if property_name %}&property_name={{ property_name }}{% endif %}{% if low_price %}&low_price={{ low_price }}{% endif %}{% if high_price %}&high_price={{ high_price }}{% endif %}{% for area in selected_areas %}&area={{ area }}{% endfor %}{% for layout in selected_layout %}&layout={{ layout }}{% endfor %}{% for price in price_options %}&price={{ price }}{% endfor %}{% if selected_minute %}&walkMinute={{ selected_minute }}{% endif %}{% if selected_years %}&yearBuilt={{ selected_years }}{% endif %}{% for type in selected_type %}&type={{ type }}{% endfor %}{% if sort_option %}&sort={{ sort_option }}{% endif %}" class="prev">{% trans "前へ" %}</a>
+                {% else %}
+                    <a href="?page={{ page_obj.previous_page_number }}{% if property_type_name %}&property_type_name={{ property_type_name }}{% endif %}{% if property_name %}&property_name={{ property_name }}{% endif %}{% if low_price %}&low_price={{ low_price }}{% endif %}{% if high_price %}&high_price={{ high_price }}{% endif %}{% for area in selected_areas %}&area={{ area }}{% endfor %}{% for layout in selected_layout %}&layout={{ layout }}{% endfor %}{% for price in price_options %}&price={{ price }}{% endfor %}{% if selected_minute %}&walkMinute={{ selected_minute }}{% endif %}{% if selected_years %}&yearBuilt={{ selected_years }}{% endif %}{% for type in selected_type %}&type={{ type }}{% endfor %}{% if sort_option %}&sort={{ sort_option }}{% endif %}" class="prev">{% trans "前へ" %}</a>
+                {% endif %}
+            {% endif %}
+    
+            {% for num in paginator.page_range %}
+                {% if page_obj.number == num %}
+                    <span class="page-num page-current">{{ num }}</span>
+                {% else %}
+                    <a href="?page={{ num }}{% if property_type_name %}&property_type_name={{ property_type_name }}{% endif %}{% if property_name %}&property_name={{ property_name }}{% endif %}{% if low_price %}&low_price={{ low_price }}{% endif %}{% if high_price %}&high_price={{ high_price }}{% endif %}{% for area in selected_areas %}&area={{ area }}{% endfor %}{% for layout in selected_layout %}&layout={{ layout }}{% endfor %}{% for price in price_options %}&price={{ price }}{% endfor %}{% if selected_minute %}&walkMinute={{ selected_minute }}{% endif %}{% if selected_years %}&yearBuilt={{ selected_years }}{% endif %}{% for type in selected_type %}&type={{ type }}{% endfor %}{% if sort_option %}&sort={{ sort_option }}{% endif %}" class="page-num">{{ num }}</a>
+                {% endif %}
+            {% endfor %}
+    
+            {% if page_obj.has_next %}
+                {% if page_obj.next_page_number == paginator.num_pages %}
+                    <a href="?page={{ paginator.num_pages }}{% if property_type_name %}&property_type_name={{ property_type_name }}{% endif %}{% if property_name %}&property_name={{ property_name }}{% endif %}{% if low_price %}&low_price={{ low_price }}{% endif %}{% if high_price %}&high_price={{ high_price }}{% endif %}{% for area in selected_areas %}&area={{ area }}{% endfor %}{% for layout in selected_layout %}&layout={{ layout }}{% endfor %}{% for price in price_options %}&price={{ price }}{% endfor %}{% if selected_minute %}&walkMinute={{ selected_minute }}{% endif %}{% if selected_years %}&yearBuilt={{ selected_years }}{% endif %}{% for type in selected_type %}&type={{ type }}{% endfor %}{% if sort_option %}&sort={{ sort_option }}{% endif %}" class="next">{% trans "次へ" %}</a>
+                {% else %}
+                    <a href="?page={{ page_obj.next_page_number }}{% if property_type_name %}&property_type_name={{ property_type_name }}{% endif %}{% if property_name %}&property_name={{ property_name }}{% endif %}{% if low_price %}&low_price={{ low_price }}{% endif %}{% if high_price %}&high_price={{ high_price }}{% endif %}{% for area in selected_areas %}&area={{ area }}{% endfor %}{% for layout in selected_layout %}&layout={{ layout }}{% endfor %}{% for price in price_options %}&price={{ price }}{% endfor %}{% if selected_minute %}&walkMinute={{ selected_minute }}{% endif %}{% if selected_years %}&yearBuilt={{ selected_years }}{% endif %}{% for type in selected_type %}&type={{ type }}{% endfor %}{% if sort_option %}&sort={{ sort_option }}{% endif %}" class="next">{% trans "次へ" %}</a>
+                {% endif %}
+            {% endif %}
+        </span>
+    </div>
+    
+
+    <div class="search-test">
+        {% for property in property_list %}
+            <div id="room" class="area5 property-count">
+                <div class="area6">
+                    <div class="search-contact">
+                        <div class="search-contact-link">
+                            <a href="{% url "stores:property_detail" pk=property.id %}"><img src="{{ property.picture_url.url }}" alt=""  class="search-contact-img"></a>
+                        </div>
+                        <div class="search-contact-ex">
+                            <div class="search-heart">
+                                <a href="{% url "stores:property_detail" pk=property.id %}"><h3 class="search-contact-name">{{ property.property_name }}</h3></a>
+                                {% comment %} <p><img src="images/heart.svg" alt="">お気に入り</p> {% endcomment %}
+                                <div class="card-header">
+                                    {% if property.is_user_liked %}
+                                    <button type="button" class="ajax-like" id="like-button-{{ property.id }}"
+                                        style="border:none;background:none">
+                                        <!-- すでにイイねしている時はfasクラス -->
+                                        <i class="fas fa-heart text-danger" id="like-icon-{{ property.id }}"></i>
+                                    </button>
+                                    {% else %}
+                                    <button type="button" class="ajax-like" id="like-button-{{ property.id }}"
+                                        style="border:none;background:none">
+                                        <!-- イイねしていないときはfarクラス -->
+                                        <i class="far fa-heart text-danger" id="like-icon-{{ property.id }}"></i>
+                                    </button>
+                                    {% endif %}
+                                    <!-- イイねの数 -->
+                                    {% comment %} <span id="like-count-{{ property.id }}">{{ property.like_set.count }}</span> {% endcomment %}
+                                </div>
+                            </div>
+
+                            <div class="search-contact-content">
+                                <div class="search-contact-pin">
+                                    <img src="{% static 'images/geo-alt-fill.svg' %}" alt="" class="search-contact-img2">
+                                    <p>{{ property.address }}</p>
+                                </div>
+                                <div class="search-contact-pin">
+                                    <img src="{% static 'images/train-front-fill.svg' %}" alt="" class="search-contact-img2">
+                                    <p>{{ property.station }} {% trans "徒歩" %}{{ property.walk_minute }}{% trans "分" %}</p>
+                                </div>
+                                <div class="search-contact-pin">
+                                    <img src="{% static 'images/check-square.svg' %}" alt="" class="search-contact-img2">
+                                    <p>
+                                        {% for condition in property.condition_set.all %}
+                                            <span>{{ condition.condition }}&nbsp;</span>
+                                        {% endfor %}
+                                    </p>
+                                </div>
+                            </div>
+
+                            <ul class="slider">
+                                {% for review in property.review_set.all %}
+                                <li class="slider-item">
+                                    <div class="search-contact-com">
+                                        <h3>{% trans "居住者の声" %}</h3>
+                                        <p class="comment-name">{% trans "ニックネーム" %}：{{ review.user.username }}</p>
+                                        <div class="comment-container">
+                                            <p class="comment">{{ review.review_content }}</p>
+                                        </div>
+                                    </div>
+                                </li>
+                                {% empty %}
+                                <li class="slider-item">
+                                    <div class="search-contact-com">
+                                        <h3>{% trans "居住者の声" %}</h3>
+                                        <p class="comment-name">{% trans "ニックネーム" %}：管理者</p>
+                                        <div class="comment-container">
+                                            <p class="comment">レビューがまだありません</p>
+                                        </div>
+                                    </div>
+                                </li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="search-room show">
+                        <div class="search-list">
+                            <p>{% trans "部屋番号" %}</p>
+                            <p>{% trans "階数" %}</p>
+                            <p>{% trans "賃料" %}</p>
+                            <p>{% trans "間取り" %}</p>
+                            <p>{% trans "駐車場" %}</p>
+                        </div>
+                        {% for property_detail in property.propertydetail_set.all %}
+                        {% if property_detail.purchase_status %}
+                        <div class="search-listin">
+                            <div class="search-list-img"><img src="{{ property_detail.layout_img.url }}" alt=""></div>
+                            <div class="search-list-">
+                                <p><span>{{ property_detail.room_number }}</span></p>
+                                <p><span>{{ property_detail.floor }}</span>{% trans "階" %}</p>
+                                <p class="search-list-rent">
+                                    <span class="search-list-rent-p" data-rent="{{ property_detail.rent }}"></span>{% trans "万円" %}
+                                </p>
+                                <p class="search-list-layout">{{ property_detail.layout }}</p>
+                                <p><span>{% if property_detail.parking_flg %}{% trans "有" %}{% else %}{% trans "無" %}{% endif %}</span></p>
+                            </div>
+                            <div class="search-list-detail">
+                                <a href="{% url 'stores:property_detail_room' pk=property_detail.id %}">{% trans "詳細を見る" %}</a>
+                            </div>
+                        </div>
+                        {% endif %}
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        {% empty %}
+        <h1 style="margin: 14%;">
+            {% trans "検索結果はありませんでした。" %}
+        </h1>
+        {% endfor %}
+        <div class="pagination">
+            <span class="step-links">
+                {% if page_obj.has_previous %}
+                    {% if page_obj.previous_page_number == 1 %}
+                        <a href="?page=1{% if property_type_name %}&property_type_name={{ property_type_name }}{% endif %}{% if property_name %}&property_name={{ property_name }}{% endif %}{% if low_price %}&low_price={{ low_price }}{% endif %}{% if high_price %}&high_price={{ high_price }}{% endif %}{% for area in selected_areas %}&area={{ area }}{% endfor %}{% for layout in selected_layout %}&layout={{ layout }}{% endfor %}{% for price in price_options %}&price={{ price }}{% endfor %}{% if selected_minute %}&walkMinute={{ selected_minute }}{% endif %}{% if selected_years %}&yearBuilt={{ selected_years }}{% endif %}{% for type in selected_type %}&type={{ type }}{% endfor %}{% if sort_option %}&sort={{ sort_option }}{% endif %}" class="prev">{% trans "前へ" %}</a>
+                    {% else %}
+                        <a href="?page={{ page_obj.previous_page_number }}{% if property_type_name %}&property_type_name={{ property_type_name }}{% endif %}{% if property_name %}&property_name={{ property_name }}{% endif %}{% if low_price %}&low_price={{ low_price }}{% endif %}{% if high_price %}&high_price={{ high_price }}{% endif %}{% for area in selected_areas %}&area={{ area }}{% endfor %}{% for layout in selected_layout %}&layout={{ layout }}{% endfor %}{% for price in price_options %}&price={{ price }}{% endfor %}{% if selected_minute %}&walkMinute={{ selected_minute }}{% endif %}{% if selected_years %}&yearBuilt={{ selected_years }}{% endif %}{% for type in selected_type %}&type={{ type }}{% endfor %}{% if sort_option %}&sort={{ sort_option }}{% endif %}" class="prev">{% trans "前へ" %}</a>
+                    {% endif %}
+                {% endif %}
+        
+                {% for num in paginator.page_range %}
+                    {% if page_obj.number == num %}
+                        <span class="page-num page-current">{{ num }}</span>
+                    {% else %}
+                        <a href="?page={{ num }}{% if property_type_name %}&property_type_name={{ property_type_name }}{% endif %}{% if property_name %}&property_name={{ property_name }}{% endif %}{% if low_price %}&low_price={{ low_price }}{% endif %}{% if high_price %}&high_price={{ high_price }}{% endif %}{% for area in selected_areas %}&area={{ area }}{% endfor %}{% for layout in selected_layout %}&layout={{ layout }}{% endfor %}{% for price in price_options %}&price={{ price }}{% endfor %}{% if selected_minute %}&walkMinute={{ selected_minute }}{% endif %}{% if selected_years %}&yearBuilt={{ selected_years }}{% endif %}{% for type in selected_type %}&type={{ type }}{% endfor %}{% if sort_option %}&sort={{ sort_option }}{% endif %}" class="page-num">{{ num }}</a>
+                    {% endif %}
+                {% endfor %}
+        
+                {% if page_obj.has_next %}
+                    {% if page_obj.next_page_number == paginator.num_pages %}
+                        <a href="?page={{ paginator.num_pages }}{% if property_type_name %}&property_type_name={{ property_type_name }}{% endif %}{% if property_name %}&property_name={{ property_name }}{% endif %}{% if low_price %}&low_price={{ low_price }}{% endif %}{% if high_price %}&high_price={{ high_price }}{% endif %}{% for area in selected_areas %}&area={{ area }}{% endfor %}{% for layout in selected_layout %}&layout={{ layout }}{% endfor %}{% for price in price_options %}&price={{ price }}{% endfor %}{% if selected_minute %}&walkMinute={{ selected_minute }}{% endif %}{% if selected_years %}&yearBuilt={{ selected_years }}{% endif %}{% for type in selected_type %}&type={{ type }}{% endfor %}{% if sort_option %}&sort={{ sort_option }}{% endif %}" class="next">{% trans "次へ" %}</a>
+                    {% else %}
+                        <a href="?page={{ page_obj.next_page_number }}{% if property_type_name %}&property_type_name={{ property_type_name }}{% endif %}{% if property_name %}&property_name={{ property_name }}{% endif %}{% if low_price %}&low_price={{ low_price }}{% endif %}{% if high_price %}&high_price={{ high_price }}{% endif %}{% for area in selected_areas %}&area={{ area }}{% endfor %}{% for layout in selected_layout %}&layout={{ layout }}{% endfor %}{% for price in price_options %}&price={{ price }}{% endfor %}{% if selected_minute %}&walkMinute={{ selected_minute }}{% endif %}{% if selected_years %}&yearBuilt={{ selected_years }}{% endif %}{% for type in selected_type %}&type={{ type }}{% endfor %}{% if sort_option %}&sort={{ sort_option }}{% endif %}" class="next">{% trans "次へ" %}</a>
+                    {% endif %}
+                {% endif %}
+            </span>
+        </div>
+    </div>
+</main>
+{% endblock %}
+
+{% block extrajs %}
+<script type="text/javascript">
+    /* ポストに対するイイね */
+    document.querySelectorAll('.ajax-like').forEach(button => {
+        button.addEventListener('click', e => {
+            e.preventDefault();
+            const propertyId = button.id.split('-')[2]; // 物件IDを取得
+            const url = '{% url "like:like" %}';
+            fetch(url, {
+                method: 'POST',
+                body: `property_pk=${propertyId}`,
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded; charset=utf-8',
+                    'X-CSRFToken': '{{ csrf_token }}',
+                },
+            }).then(response => response.json())
+                .then(response => {
+
+                    const icon = document.getElementById(`like-icon-${propertyId}`);
+                    if (response.method === 'create') {
+                        icon.classList.remove('far');
+                        icon.classList.add('fas');
+                    } else {
+                        icon.classList.remove('fas');
+                        icon.classList.add('far');
+                    }
+                })
+                .catch(error => console.log(error));
+        });
+    });
+
+    /* 各物件ごとの初回読み込み時にハートの状態を設定 */
+    document.addEventListener('DOMContentLoaded', (event) => {
+        document.querySelectorAll('.ajax-like').forEach(button => {
+            const propertyId = button.id.split('-')[2]; // 物件IDを取得
+            const url = `{% url "like:like_status" %}?property_pk=${propertyId}`;
+            fetch(url)
+                .then(response => response.json())
+                .then(response => {
+                    const icon = document.getElementById(`like-icon-${propertyId}`);
+
+                    if (response.is_user_liked) {
+                        icon.classList.remove('far');
+                        icon.classList.add('fas');
+                    } else {
+                        icon.classList.remove('fas');
+                        icon.classList.add('far');
+                    }
+                })
+                .catch(error => console.log(error));
+        });
+    });
+
+    var selectedOption = localStorage.getItem('selectedOption');
+    if (selectedOption) {
+        document.getElementById('sort').value = selectedOption;
+    }
+
+    document.getElementById('sort').addEventListener('change', function () {
+        // 選択されたオプションの値を取得
+        var selectedOption = document.getElementById('sort').value;
+        // ローカルストレージに選択されたオプションを保存
+        localStorage.setItem('selectedOption', selectedOption);
+        // フォームを送信
+        document.getElementById('sortForm').submit();
+    });
+
+
+    // JavaScriptでフォーマットする処理を追加
+    document.addEventListener("DOMContentLoaded", function() {
+        var rentElements = document.querySelectorAll(".search-list-rent-p");
+
+        rentElements.forEach(function(element) {
+            var rentValue = parseFloat(element.getAttribute("data-rent"));
+            if (!isNaN(rentValue)) {
+                var formattedRent = (rentValue / 10000).toFixed(1); // 万円に変換して表示
+                var rentTextNode = document.createTextNode(formattedRent);
+                element.innerHTML = ''; // 現在のテキストをクリア
+                element.appendChild(rentTextNode);
+            }
+        });
+    });
+
+    document.addEventListener("DOMContentLoaded", function() {
+        // HTML内のすべての該当要素を取得
+        var layoutElements = document.querySelectorAll(".search-list-layout");
+    
+        // 各要素に対して処理を行う
+        layoutElements.forEach(function(layoutElement) {
+            // レイアウトが存在するか確認
+            if (layoutElement) {
+            // レイアウトのテキストを取得
+            var layoutText = layoutElement.textContent;
+    
+            // 最初の一文字だけを span 要素で囲んでスタイルを適用
+            if (layoutText.length > 0) {
+                var firstLetter = layoutText[0];
+                var remainingText = layoutText.slice(1);
+    
+                // 新しい span 要素を作成
+                var firstLetterSpan = document.createElement("span");
+                firstLetterSpan.textContent = firstLetter;
+                firstLetterSpan.classList.add("first-letter-large");
+    
+                // 元のテキストの後に新しい span 要素を追加
+                layoutElement.innerHTML = remainingText; // 最初の文字以降のテキスト
+                layoutElement.insertBefore(firstLetterSpan, layoutElement.firstChild);
+            }
+            }
+        });
+        });
+
+        document.addEventListener('DOMContentLoaded', function () {
+            var showRoomLink = document.getElementById('show-room-link');
+            var showPropertyLink = document.getElementById('show-property-link');
+            var searchRoomElements = document.querySelectorAll('.search-room');
+        
+            showRoomLink.addEventListener('click', function (event) {
+                event.preventDefault();
+                showSearchRoom();
+                // クリックされた要素に .tab-current クラスを追加
+                event.target.classList.add('tab-current');
+                // もう片方のリンクから .tab-current クラスを削除
+                showPropertyLink.classList.remove('tab-current');
+            });
+        
+            showPropertyLink.addEventListener('click', function (event) {
+                event.preventDefault();
+                hideSearchRoom();
+                // クリックされた要素に .tab-current クラスを追加
+                event.target.classList.add('tab-current');
+                // もう片方のリンクから .tab-current クラスを削除
+                showRoomLink.classList.remove('tab-current');
+            });
+        
+            function showSearchRoom() {
+                searchRoomElements.forEach(function (element) {
+                    element.classList.add('show');
+                });
+            }
+        
+            function hideSearchRoom() {
+                searchRoomElements.forEach(function (element) {
+                    element.classList.remove('show');
+                });
+            }
+        });
+
+</script>
+{% endblock %}

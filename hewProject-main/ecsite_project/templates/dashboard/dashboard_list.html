@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load static %}
+{% load i18n %}
+<main class="mypage">
+    <div class="mypage-wrap">
+        <div class="mypage-container">
+            <ul class="mypage-tab">
+                <li class="mypage-profile">
+                    {% if user.profile_picture %}
+                    <img src="{{ user.profile_picture.url }}" alt="" class="profile-picture">
+                    {% else %}
+                    <img src="{% static "images/person-circle.svg" %}" alt="" class="profile-picture">
+                    {% endif %}
+                    <p class="tab-username">{{ user.username }}</p>
+                </li>
+                <li><a href="{% url "dashboard:dashboard_list" %}" class="mypage-tab-current">{% trans "閲覧" %}</a></li>
+                <li><a href="{% url "dashboard:article_create" %}">{% trans "投稿する" %}</a></li>
+            </ul>
+
+            <div class="contents">
+                <div class="mypage-contents">
+                    <h2 class="heading">{{ user.contract_property }}&nbsp;{% trans "掲示板" %}</h2>
+                    <div class="logout">
+                        {% if user.contract_property %}
+                        <div class="dashboard-container">
+                                <ul class="dashboard-label">
+                                    <li class="dashboard-label-title">{% trans "タイトル" %}</li>
+                                    <li class="dashboard-label-date">{% trans "ユーザー" %}</li>
+                                    <li class="dashboard-label-user">{% trans "投稿日時" %}</li>
+                                </ul>
+                                {% for article in object_list %}
+                                <ul class="dashboard-list">
+                                    <li class="dashboard-label-title"><a href="{% url "dashboard:dashboard_detail" pk=article.id %}">{{ article.title }}</a></li>
+                                    <li class="dashboard-label-user dashboard-user">                    
+                                        {% if article.user.profile_picture %}
+                                        <img src="{{ article.user.profile_picture.url }}" alt="">
+                                        {% else %}
+                                        <img src="{% static "images/person-circle.svg" %}" alt="" class="">
+                                        {% endif %}
+                                        <p>{{ article.user.username }}</p>
+                                    </li>
+                                    <li class="dashboard-label-date">{{ article.created_at }}</li>
+                                </ul>
+                                {% empty %}
+                                <ul class="dashboard-list">
+                                  <li>{% trans "記事がありません。" %}</li>
+                                </ul>
+                                {% endfor %}
+                        </div>
+                        {% else %}
+                        <h2>{% trans "物件契約後、ご利用いただけます" %}</h2>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+{% endblock %}

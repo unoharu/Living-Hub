@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load i18n %}
+<main  class="login">
+    <form class="login-form" method="POST" novalidate>
+      {% csrf_token %}
+      <p class="login-name">{% trans "ログイン" %}</p>
+      {% if form.errors %}
+      <div class="alert alert-danger">
+        <strong>{% trans "メールアドレスまたはパスワードが正しくありません。" %}</strong>
+      </div>
+    {% endif %}
+          {{ form.username }}<br>
+          {{ form.password }}<br>
+          <div class="login-cash">
+          {{ form.remember }}
+          <label for="{{ form.remember.id_for_label }}">{% trans "ログイン状態を保持する" %}</label>
+          </div>
+        <input type="submit" value="{% trans "ログイン" %}" class="login-button">
+    
+        <li class="signup-page"><a href="{% url "accounts:regist" %}" >{% trans "新規登録はこちら" %}</a></li>
+    </form>
+</main>
+  <input type="hidden" name="next" value="{{ request.GET.next }}">
+{% endblock %}

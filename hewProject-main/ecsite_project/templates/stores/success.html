@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load i18n %}
+{% block content %}
+<main class="detail">
+	<div class="property-success">
+        <div class="property-success-container">
+            <img src="{% static "images/check-circle.svg" %}" alt="">
+        <h2>{% trans "おめでとうございます！契約が完了しました。" %}</h2>
+            <p>{% trans "物件の確認、掲示板が利用可能になりました" %}</p>
+            <p class="property-success-link"><a href="{% url "accounts:user" %}">{% trans "マイページはこちら" %}</a></p>
+        </div>
+	</div>
+</main>
+{% endblock %}

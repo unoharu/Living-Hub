@@ -1,0 +1,85 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load i18n %}
+<main class="signup">
+    <form class="signup-form" action="{% url 'accounts:user_confirm' %}" method="POST" enctype="multipart/form-data" novalidate>
+        {% csrf_token %}
+        {{ form.media }}
+        <div>
+            <p class="signup-name">{% trans "新規登録" %}</p>
+        </div>
+
+        <div class="signup-nav">
+            <label for="{{ form.email.id_for_label }}" class="signup-nav-name">{% trans "メールアドレス" %}&nbsp;<span class="required">※{% trans "必須" %}</span></label>
+            {{ form.email }}
+            {% for error in form.email.errors %}
+                <p class="form-text-danger">{{ error }}</p>
+            {% endfor %}
+        </div>
+    
+        <div class="signup-nav">
+            <label for="{{ form.password1.id_for_label }}" class="signup-nav-name">{% trans "パスワード" %}&nbsp;<span class="required">※{% trans "必須" %}</span></label>
+            {{ form.password1 }}
+            {% for error in form.password1.errors %}
+                <p class="form-text-danger">{{ error }}</p>
+            {% endfor %}
+        </div>
+    
+        <div class="signup-nav">
+            <label for="{{ form.password2.id_for_label }}" class="signup-nav-name">{% trans "パスワード（確認用）" %}&nbsp;<span class="required">※{% trans "必須" %}</span></label>
+            {{ form.password2 }}
+            {% for error in form.password2.errors %}
+                <p class="form-text-danger">{{ error }}</p>
+            {% endfor %}
+        </div>
+
+        <div class="signup-nav">
+            <label for="{{ form.username.id_for_label }}" class="signup-nav-name">{% trans "ニックネーム" %}&nbsp;<span class="required">※{% trans "必須" %}</span></label>
+            {{ form.username }}
+            {% for error in form.username.errors %}
+                <p class="form-text-danger">{{ error }}</p>
+            {% endfor %}
+        </div>
+        
+        <div class="signup-nav">
+            <label class="signup-label signup-nav-name" for="{{ form.sex.id_for_label }}">{% trans "性別" %}</label>
+            <div class="signup-gender-radio">
+                {{ form.sex }}
+            </div>
+        </div>
+
+        <div class="signup-nav">
+            <label for="{{ form.birthday.id_for_label }}" class="signup-nav-name">{% trans "生年月日" %}</label>
+            {{ form.birthday }}
+        </div>
+    
+        <div class="signup-nav">
+        <label for="{{ form.nationality.id_for_label }}" class="signup-nav-name" class="signup-nav-name">{% trans "国籍" %}</label>
+        {{ form.nationality }}
+        </div>
+         
+        <div class="signup-nav">
+        <label for="{{ form.job.id_for_label }}" class="signup-nav-name">{% trans "職業" %}</label>
+        {{ form.job }}
+        </div>
+        
+        <div class="signup-nav">
+        <label for="{{ form.self_introduction.id_for_label }}" class="signup-nav-name" class="signup-nav-name">{% trans "自己紹介" %}</label>
+        {{ form.self_introduction }}
+        </div>
+    
+
+    
+        <div class="signup-nav">
+        <label for="{{ form.profile_picture.id_for_label }}" class="signup-nav-name">{% trans "プロフィール写真" %}</label>
+        {{ form.profile_picture }}
+        </div>
+
+        <div class="example">
+            <input type="submit" value="{% trans "確認画面" %}" class="signup-button">
+        </div>
+
+        <p class="to-login"><a href="{% url "accounts:user_login" %}" class="signup-page">{% trans "ログインはこちら" %}</a></p>
+    </form>
+</main>
+{% endblock %}

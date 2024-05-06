@@ -1,0 +1,115 @@
+{% load static %} {% load i18n %}
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="utf-8">
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" rel="stylesheet" />
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" rel="stylesheet" />
+    <link rel="icon" type="image/png" href="{% static 'images/logo.svg' %}">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.10.1/mdb.min.css" rel="stylesheet" />
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css">
+    <link rel="stylesheet" href="{% static 'css/reset.css' %}">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'js/main.js' %}">
+</head>
+
+<body>
+    <header class="header-wrap">
+        <div class="header-line1">
+            {% if user.is_authenticated %}
+            <ul>
+                <li><a href="{% url 'accounts:user' %}">{% trans "マイページ" %}</a></li>
+                <li><a href="{% url "dashboard:dashboard_list" %}">{% trans "掲示板" %}</a></li>
+                <li class="language-menu">
+                    <select onchange="redirectToUrl(this)" class="language-menu-inner">
+                    <option value="">{% trans "言語" %}</option>
+                    <option value="ja">日本語</option>
+                    <option value="en">English</option>
+                    <option value="zh">簡体中文</option>
+                </select>
+                </li>
+            </ul>
+            {% else %}
+            <ul>
+                <li><a href="{% url 'accounts:regist' %}">{% trans "会員登録" %}</a></li>
+                <li><a href="{% url 'accounts:user_login' %}">{% trans "ログイン" %}</a></li>
+                <li class="language-menu">
+                    <select onchange="redirectToUrl(this)" class="language-menu-inner">
+                <option value="">{% trans "言語" %}</option>
+                <option value="ja">日本語</option>
+                <option value="en">English</option>
+                <option value="zh">簡体中文</option>
+            </select>
+                </li>
+            </ul>
+            {% endif %}
+        </div>
+        <div class="header-line2">
+            <div class="header-line2-container">
+                <div class="header-title">
+                    <a href="{% url 'index:index' %}"><img src="{% static 'images/logo.svg' %}" alt=""></a>
+                    <a href="{% url 'index:index' %}">
+                        <p>LIVING HUB</p>
+                    </a>
+                </div>
+                <ul>
+                    <li><a href="{% url 'index:index' %}">{% trans "ホーム" %}</a></li>
+                    <li><a href="{% url 'stores:property_list' %}">{% trans "エリアから探す" %}</a></li>
+                    <li><a href="{% url 'like:like_list' %}">{% trans "お気に入りから探す" %}</a></li>
+                </ul>
+                <div class="header-right"></div>
+            </div>
+        </div>
+    </header>
+    {% block content %}{% endblock %}
+    <footer class="footer-wrap">
+        <div>
+            <ul class="footer-links">
+                <li><a href="">{% trans "プライバシーポリシー" %}</a></li>
+                <li><a href="">{% trans "利用規約" %}</a></li>
+                <li>{% trans "東京都新宿区西新宿1-12-12 モード学園コクーンタワー" %}</li>
+            </ul>
+            <div class="footer-access">
+                <ul>
+                    <li>© 2023 Living Hub. All Rights Reserved.</li>
+                    <li>{% trans "お問い合わせ" %}: contact@company.co.jp</li>
+                </ul>
+            </div>
+        </div>
+        <ul class="footer-accounts">
+            <li><a href="">YouTube</a></li>
+            <li><a href="">Facebook</a></li>
+            <li><a href="">Instagram</a></li>
+        </ul>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/4.0.0/mdb.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+
+    <script src="{% static 'js/9-2-2.js' %}"></script>
+    <script src="{% static 'js/slick.js' %}"></script>
+    <script>
+        // option要素が選択された時に呼び出される関数
+        function redirectToUrl(select) {
+            var selectedValue = select.value; // 選択された値を取得
+
+            // 選択された言語に基づいてリダイレクトを行う
+            if (selectedValue === 'ja') {
+                window.location.href = "{% url 'accounts:language_switch' 'ja' %}";
+            } else if (selectedValue === 'en') {
+                window.location.href = "{% url 'accounts:language_switch' 'en' %}";
+            } else if (selectedValue === 'zh') {
+                window.location.href = "{% url 'accounts:language_switch' 'zh' %}";
+            }
+        }
+    </script>
+    {% block extrajs %}{% endblock %}
+</body>
+
+</html>

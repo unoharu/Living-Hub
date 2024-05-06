@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load static %}
+{% load i18n %}
+<style>
+    
+</style>
+<main class="mypage">
+    <div class="mypage-wrap">
+        <div class="mypage-container">
+            <ul class="mypage-tab">
+                <li class="mypage-profile">
+                    {% if user.profile_picture %}
+                    <img src="{{ user.profile_picture.url }}" alt="" class="profile-picture">
+                    {% else %}
+                    <img src="{% static "images/person-circle.svg" %}" alt="" class="profile-picture">
+                    {% endif %}
+                    <p class="tab-username">{{ user.username }}</p>
+                </li>
+                <li><a href="{% url "dashboard:dashboard_list" %}" class="mypage-tab-current">{% trans "閲覧" %}</a></li>
+                <li><a href="{% url "dashboard:article_create" %}" >{% trans "投稿する" %}</a></li>
+            </ul>
+
+            <div class="contents">
+                <div class="mypage-contents">
+                    <h2 class="heading">{{ user.contract_property }}&nbsp;{% trans "掲示板" %}</h2>
+                    <div class="dashboard-detail-wrap">
+                        <div class="dashboard-detail">
+                            {% if user.contract_property %}
+                                <h2>{{ object.title }}</h2>
+                                <div class="dashboard-detail-container">
+                                    <div class="dashboard-detail-profile">
+                                        {% if article.user.profile_picture %}
+                                        <img src="{{ article.user.profile_picture.url }}" alt="" class="dashboard-detail-user">
+                                        {% else %}
+                                        <img src="{% static "images/person-circle.svg" %}" alt="" class="dashboard-detail-user">
+                                        {% endif %}
+                                        <div class="dashboard-detail-username-email">
+                                            <p class="dashboard-detail-username">{{ object.user.username }}</p>
+                                            <p>{{ object.user.email }}</p>
+                                        </div>
+                                    </div>
+                                    <p>{{ object.created_at }}</p>
+                                </div>
+                                <p class="dashboard-comment">{{ object.comment }}</p>
+                                {% if object.dashboard_picture %}
+                                <div class="dashboard-detail-img">
+                                    <img src="{{ object.dashboard_picture.url }}" alt="添付画像">
+                                </div>
+                                {% endif %}
+                            {% else %}
+                            <h2>{% trans "物件契約後、ご利用いただけます" %}</h2>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+{% endblock %}

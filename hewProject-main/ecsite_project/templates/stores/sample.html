@@ -1,0 +1,106 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="col-6 offset-3">
+    <div style="float:left; padding: 0 20px 20px 0">
+        {% for picture in object.propertypicture_set.all %}
+            {% if forloop.first %}
+            <img width="200px" height="200px" src="{{ picture.picture.url }}" alt="">
+            {% else %}
+            <img width="100px" height="100px" src="{{ picture.picture.url }}" alt="">
+            {% endif %}
+        {% endfor %}
+    </div>
+    <div>
+        <p>物件名：{{ object.property_name }}</p>
+    </div>
+    <div class="card-header">
+        {% if is_user_liked %}
+        <button type="button" id="ajax-like" style="border:none;background:none">
+          <!-- すでにイイねしている時はfasクラス -->
+          <i class="fas fa-heart text-danger" id="like-icon"></i>
+        </button>
+        {% else %}
+        <button type="button" id="ajax-like" style="border:none;background:none">
+          <!-- イイねしていないときはfarクラス -->
+          <i class="far fa-heart text-danger" id="like-icon"></i>
+        </button>
+        {% endif %}
+        <!-- イイねの数 -->
+        <span id="like-count">{{ like_count }}</span>
+        <span>件のイイね</span>
+    </div>
+    <!-- 内側のループでの表示 -->
+    <table class='table table-bordered'>
+		<thead style='background-color: #EEEEEE;'>
+			<tr>
+				<td>間取り図</td>
+				<td>階数</td>
+				<td>賃料</td>
+				<td>間取り</td>
+				<td>ペット</td>
+				<td>駐車場</td>
+				<td>3D内見</td>
+				<td></td>
+			</tr>
+		</thead>
+		<tbody>
+			{% for property_detail in property.propertydetail_set.all %}
+			<tr>
+				<td>
+					{% for detail_picture in property_detail.propertypicture_set.all %}
+						{% if forloop.first %}
+							<img src="{{ detail_picture.picture.url }}" alt="" style='width:50px; height:50px;'>
+						{% endif %}
+					{% endfor %}
+				</td>
+				<td>{{ property_detail.floor }}階</td>
+				<td>{{ property_detail.rent }}円</td>
+				<td>{{ property_detail.layout }}</td>
+				<td>{% if property_detail.parking_flg %}有{% else %}無{% endif %}</td>
+				<td>{% if property_detail.pet_flg %}可{% else %}不可{% endif %}</td>
+				<td><a href="http://10.192.77.60:5173/">詳細</a></td>
+				<td><a href="">契約手続を行う</a></td>
+			</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+</div>
+{% endblock %}
+
+{% block extrajs %}
+<script type="text/javascript">
+  /* ポストに対するイイね */
+  document.getElementById('ajax-like').addEventListener('click', e => {
+    e.preventDefault();
+    const url = '{% url "like:like" %}';
+    fetch(url, {
+      method: 'POST',
+      body: `property_pk={{property.pk}}`,
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded; charset=utf-8',
+        'X-CSRFToken': '{{ csrf_token }}',
+      },
+    }).then(response => {
+        return response.json();
+      }).then(response => {
+        // イイね数を書き換える
+        const counter = document.getElementById('like-count')
+        counter.textContent = response.like_count
+        
+        const icon = document.getElementById('like-icon')
+        // 作成した場合はハートを塗る
+        if (response.method == 'create') {
+          icon.classList.remove('far')
+          icon.classList.add('fas')
+          icon.id = 'like-icon'
+        } else {
+          icon.classList.remove('fas')
+          icon.classList.add('far')
+          icon.id = 'like-icon'
+        }
+      }).catch(error => {
+        console.log(error);
+      });
+    });
+</script>
+{% endblock %}
