@@ -7,12 +7,11 @@
 
 発表者：戸田康介
 
-### 作品紹介(モバイル専用)
+### 作品紹介(モバイル専用)<-学内のAzureを使用のためただいま停止中
 [![QR](https://github.com/unoharu/HewProject2024/assets/147580162/35729f92-c43f-4747-ac4d-435e490d544a)](https://wonderful-stone-0d7337700.4.azurestaticapps.net/)
 
 ↑クリックで見れます
 
-作品説明、取扱説明、要件定義、メンバーなど記載
 
 ### 自分の役割
 * 企画
