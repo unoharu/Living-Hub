@@ -1,4 +1,9 @@
-"""Inquiries URL configuration. Implemented in Phase 3."""
+"""Inquiries URL configuration."""
 from django.urls import path
 
-urlpatterns: list = []
+from .views import MyViewingRequestListView, ViewingRequestCreateView
+
+urlpatterns = [
+    path("", ViewingRequestCreateView.as_view(), name="inquiry-create"),
+    path("mine/", MyViewingRequestListView.as_view(), name="inquiry-mine"),
+]

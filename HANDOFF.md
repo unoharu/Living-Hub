@@ -156,7 +156,7 @@ Article (user + title + content)
 
 ---
 
-## API エンドポイント (Phase 3 実装予定)
+## API エンドポイント (Phase 3 実装済み)
 
 ```
 POST  /api/v1/accounts/register/
@@ -234,7 +234,7 @@ npm run dev                       # :5173
 
 - [x] **Phase 1**: ディレクトリ構造・設定分割・環境整備
 - [x] **Phase 2**: バックエンドモデル実装・マイグレーション・Admin登録
-- [ ] **Phase 3**: REST API 実装（シリアライザ・ビュー・URL）
+- [x] **Phase 3**: REST API 実装（シリアライザ・ビュー・URL・フィルタ・テスト）
 - [ ] **Phase 4**: フロントエンド TypeScript 移行・API 連携
 - [ ] **Phase 5**: 統合検証・本番ビルド確認
 
@@ -252,39 +252,51 @@ npm run dev                       # :5173
 - [x] 初期フィクスチャ作成（Ward, PropertyType, AmenityCategory x4, Amenity x14, 1 Property + 1 Unit with has_3d_model=True）
 - [x] `python manage.py check` でエラーなし確認
 
-## Phase 3 チェックリスト（次のフェーズ）
+## Phase 3 チェックリスト ✅ 完了
 
 ### accounts
-- [ ] `serializers.py`: UserSerializer, RegisterSerializer, LoginSerializer, MeSerializer
-- [ ] `views.py`: RegisterView, LoginView (JWT), TokenRefreshView, MeView
-- [ ] `urls.py`: 上記エンドポイント登録
+- [x] `serializers.py`: RegisterSerializer（パスワード確認・バリデーション）, MeSerializer
+- [x] `views.py`: RegisterView（JWT即時発行）, MeView（GET/PATCH）
+- [x] `urls.py`: register, login(simplejwt), token/refresh, me
 
 ### properties
-- [ ] `filters.py`: PropertyFilter (django-filter)
-- [ ] `serializers.py`: CitySerializer, WardSerializer, PropertyListSerializer, PropertyDetailSerializer, UnitSerializer
-- [ ] `views.py`: PropertyListView, PropertyDetailView, UnitListView, UnitDetailView
-- [ ] `urls.py`: エンドポイント登録
+- [x] `filters.py`: PropertyFilter（ward, property_type, layout, min/max_rent, walk_minute, amenity, pet_allowed, parking, availability）
+- [x] `serializers.py`: PropertyListSerializer（is_favorite付き）, PropertyDetailSerializer（画像+ユニットネスト）, UnitSerializer（設備カテゴリ別グループ）
+- [x] `views.py`: PropertyListView, PropertyDetailView, PropertyUnitListView, UnitDetailView
+- [x] `urls.py`: エンドポイント登録
 
 ### interactions
-- [ ] `serializers.py`: FavoriteSerializer, ReviewSerializer
-- [ ] `views.py`: FavoriteToggleView, ReviewCreateView, FavoriteListView
-- [ ] `urls.py`: エンドポイント登録
+- [x] `serializers.py`: FavoriteSerializer, FavoriteToggleSerializer, ReviewSerializer（重複チェック）
+- [x] `views.py`: FavoriteListView, FavoriteToggleView（add/remove toggle）, ReviewCreateView
+- [x] `urls.py`: favorites/, favorites/toggle/, reviews/
 
 ### inquiries
-- [ ] `serializers.py`: ViewingRequestSerializer
-- [ ] `views.py`: ViewingRequestCreateView, MyViewingRequestListView
-- [ ] `urls.py`: エンドポイント登録
+- [x] `serializers.py`: ViewingRequestSerializer（status_display付き）
+- [x] `views.py`: ViewingRequestCreateView, MyViewingRequestListView
+- [x] `urls.py`: "", mine/
 
 ### bulletin
-- [ ] `serializers.py`: ArticleSerializer
-- [ ] `views.py`: ArticleListView, ArticleDetailView, ArticleCreateView
-- [ ] `urls.py`: エンドポイント登録
+- [x] `serializers.py`: ArticleSerializer（author_name付き）
+- [x] `views.py`: ArticleListView, ArticleDetailView, ArticleCreateView
+- [x] `urls.py`: articles/, articles/create/, articles/{id}/
 
-### テスト
-- [ ] `tests/conftest.py`: APIClient fixture, 認証済みユーザーfixture
-- [ ] `tests/test_properties/test_views.py`: 物件一覧・詳細・フィルタ
-- [ ] `tests/test_interactions/test_views.py`: お気に入りtoggle
-- [ ] `tests/test_accounts/test_views.py`: 登録・ログイン・me
+### テスト（28テスト全通過）
+- [x] `tests/conftest.py`: api_client, user, other_user, auth_client, other_auth_client
+- [x] `tests/factories.py`: 全モデルのfactory_boy factory
+- [x] `tests/test_accounts/test_views.py`: register, login, me の正常/異常系（9テスト）
+- [x] `tests/test_properties/test_views.py`: 一覧・詳細・フィルタ・is_favorite（8テスト）
+- [x] `tests/test_interactions/test_views.py`: favorite toggle, review create（11テスト）
+
+## Phase 4 チェックリスト（次のフェーズ）
+
+### フロントエンド API 連携
+- [ ] `frontend/src/api/client.ts`: axios インスタンス（JWT ヘッダ自動付与）
+- [ ] `frontend/src/api/properties.ts`: 物件一覧・詳細 API
+- [ ] `frontend/src/api/auth.ts`: 認証 API
+- [ ] `frontend/src/hooks/useProperties.ts`: TanStack Query フック
+- [ ] `frontend/src/types/api.ts`: API レスポンス型定義（Property, Unit, User など）
+- [ ] `frontend/src/stores/authStore.ts`: Zustand 認証状態
+- [ ] `frontend/src/pages/`: 物件一覧ページ・詳細ページ実装
 
 ---
 
