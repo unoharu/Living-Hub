@@ -235,8 +235,8 @@ npm run dev                       # :5173
 - [x] **Phase 1**: ディレクトリ構造・設定分割・環境整備
 - [x] **Phase 2**: バックエンドモデル実装・マイグレーション・Admin登録
 - [x] **Phase 3**: REST API 実装（シリアライザ・ビュー・URL・フィルタ・テスト）
-- [ ] **Phase 4**: フロントエンド TypeScript 移行・API 連携
-- [ ] **Phase 5**: 統合検証・本番ビルド確認
+- [x] **Phase 4**: フロントエンド実装（型定義・API連携・ページ・認証）
+- [ ] **Phase 5**: 3Dビューア実装・統合検証・本番ビルド確認
 
 ---
 
@@ -287,16 +287,49 @@ npm run dev                       # :5173
 - [x] `tests/test_properties/test_views.py`: 一覧・詳細・フィルタ・is_favorite（8テスト）
 - [x] `tests/test_interactions/test_views.py`: favorite toggle, review create（11テスト）
 
-## Phase 4 チェックリスト（次のフェーズ）
+## Phase 4 チェックリスト ✅ 完了 (2026-03-01)
 
-### フロントエンド API 連携
-- [ ] `frontend/src/api/client.ts`: axios インスタンス（JWT ヘッダ自動付与）
-- [ ] `frontend/src/api/properties.ts`: 物件一覧・詳細 API
-- [ ] `frontend/src/api/auth.ts`: 認証 API
-- [ ] `frontend/src/hooks/useProperties.ts`: TanStack Query フック
-- [ ] `frontend/src/types/api.ts`: API レスポンス型定義（Property, Unit, User など）
-- [ ] `frontend/src/stores/authStore.ts`: Zustand 認証状態
-- [ ] `frontend/src/pages/`: 物件一覧ページ・詳細ページ実装
+### 型定義
+- [x] `src/types/api.ts`: Property, PropertyDetail, Unit, User, AuthTokens, PaginatedResponse 等
+
+### API クライアント
+- [x] `src/api/client.ts`: axios + JWT interceptor（401 時 token refresh → retry）
+- [x] `src/api/auth.ts`: login, register, refreshToken, fetchMe, updateMe
+- [x] `src/api/properties.ts`: fetchProperties, fetchPropertyDetail, toggleFavorite, fetchFavorites
+
+### 状態管理
+- [x] `src/stores/authStore.ts`: Zustand v5 + localStorage persist
+
+### カスタムフック
+- [x] `src/hooks/useAuth.ts`: useLogin, useRegister, useMe
+- [x] `src/hooks/useProperties.ts`: useProperties, usePropertyDetail, useFavorites, useToggleFavorite（楽観的更新）
+
+### ルーティング
+- [x] `src/App.tsx`: createBrowserRouter + PrivateRoute + lazy loading
+
+### コンポーネント
+- [x] `src/components/layout/Header.tsx`: ナビ + 認証状態切り替え
+- [x] `src/components/layout/Layout.tsx`: Header + Outlet
+- [x] `src/components/ui/Spinner.tsx`, `Button.tsx`, `ErrorMessage.tsx`
+- [x] `src/components/property/PropertyCard.tsx`: お気に入りトグル付き
+- [x] `src/components/property/PropertyFilterBar.tsx`: エリア・賃料・間取りフィルタ（URL クエリ同期）
+
+### ページ
+- [x] `src/pages/PropertyListPage.tsx`: 一覧 + フィルタ + ページネーション
+- [x] `src/pages/PropertyDetailPage.tsx`: 詳細 + 画像ギャラリー + 部屋一覧
+- [x] `src/pages/LoginPage.tsx`, `RegisterPage.tsx`
+- [x] `src/pages/MyPage.tsx`: お気に入り一覧 + プロフィール
+- [x] `src/pages/NotFoundPage.tsx`
+
+## Phase 5 チェックリスト（次のフェーズ）
+
+### 3D ビューア
+- [ ] `src/components/three/`: @react-three/fiber で `3DRoom/public/hewroom.glb` を表示
+- [ ] PropertyDetailPage の「3Dで内見」ボタンを有効化
+
+### 統合検証
+- [ ] バックエンド + フロントエンド E2E 動作確認
+- [ ] 本番ビルド（`npm run build` → Django StaticFiles）確認
 
 ---
 
