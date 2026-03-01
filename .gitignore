@@ -1,0 +1,48 @@
+# ── Python / Django ───────────────────────────────────────────────────────────
+__pycache__/
+*.py[cod]
+*.pyo
+*.egg-info/
+
+# Virtual environment
+venv/
+.venv/
+env/
+
+# Django
+backend/.env
+backend/db.sqlite3
+backend/media/
+backend/staticfiles/
+backend/frontend_dist/
+ecsite_project/.env
+ecsite_project/db.sqlite3
+ecsite_project/media/
+ecsite_project/staticfiles/
+hewProject-main/ecsite_project/.env
+hewProject-main/ecsite_project/db.sqlite3
+hewProject-main/ecsite_project/media/
+hewProject-main/ecsite_project/staticfiles/
+
+# Test / coverage
+.pytest_cache/
+.coverage
+htmlcov/
+
+# ── Node / React ──────────────────────────────────────────────────────────────
+node_modules/
+frontend/dist/
+.vite/
+
+# ── OS / Editor ───────────────────────────────────────────────────────────────
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# ── Misc ──────────────────────────────────────────────────────────────────────
+*.log
+.env
+.env.local
+.env.*.local
+*.sqlite3
