@@ -233,24 +233,58 @@ npm run dev                       # :5173
 ## フェーズ進捗
 
 - [x] **Phase 1**: ディレクトリ構造・設定分割・環境整備
-- [ ] **Phase 2**: バックエンドモデル実装・マイグレーション・Admin登録
+- [x] **Phase 2**: バックエンドモデル実装・マイグレーション・Admin登録
 - [ ] **Phase 3**: REST API 実装（シリアライザ・ビュー・URL）
 - [ ] **Phase 4**: フロントエンド TypeScript 移行・API 連携
 - [ ] **Phase 5**: 統合検証・本番ビルド確認
 
 ---
 
-## Phase 2 チェックリスト
+## Phase 2 チェックリスト ✅ 完了
 
-- [ ] `apps/properties/models.py` — AmenityCategory, Amenity, City, Ward, PropertyType, Property, PropertyImage, Unit, UnitAmenity, UnitImage
-- [ ] `apps/interactions/models.py` — Favorite, Review
-- [ ] `apps/inquiries/models.py` — ViewingRequest
-- [ ] `apps/bulletin/models.py` — Article
-- [ ] 全アプリの `admin.py` 実装
-- [ ] `python manage.py makemigrations`
-- [ ] `python manage.py migrate`
-- [ ] 初期フィクスチャ作成（Ward, PropertyType, AmenityCategory, Amenity, 1 Property + 1 Unit with has_3d_model=True）
-- [ ] `python manage.py check` でエラーなし確認
+- [x] `apps/properties/models.py` — AmenityCategory, Amenity, City, Ward, PropertyType, Property, PropertyImage, Unit, UnitAmenity, UnitImage
+- [x] `apps/interactions/models.py` — Favorite, Review
+- [x] `apps/inquiries/models.py` — ViewingRequest
+- [x] `apps/bulletin/models.py` — Article
+- [x] 全アプリの `admin.py` 実装
+- [x] `python manage.py makemigrations`
+- [x] `python manage.py migrate`
+- [x] 初期フィクスチャ作成（Ward, PropertyType, AmenityCategory x4, Amenity x14, 1 Property + 1 Unit with has_3d_model=True）
+- [x] `python manage.py check` でエラーなし確認
+
+## Phase 3 チェックリスト（次のフェーズ）
+
+### accounts
+- [ ] `serializers.py`: UserSerializer, RegisterSerializer, LoginSerializer, MeSerializer
+- [ ] `views.py`: RegisterView, LoginView (JWT), TokenRefreshView, MeView
+- [ ] `urls.py`: 上記エンドポイント登録
+
+### properties
+- [ ] `filters.py`: PropertyFilter (django-filter)
+- [ ] `serializers.py`: CitySerializer, WardSerializer, PropertyListSerializer, PropertyDetailSerializer, UnitSerializer
+- [ ] `views.py`: PropertyListView, PropertyDetailView, UnitListView, UnitDetailView
+- [ ] `urls.py`: エンドポイント登録
+
+### interactions
+- [ ] `serializers.py`: FavoriteSerializer, ReviewSerializer
+- [ ] `views.py`: FavoriteToggleView, ReviewCreateView, FavoriteListView
+- [ ] `urls.py`: エンドポイント登録
+
+### inquiries
+- [ ] `serializers.py`: ViewingRequestSerializer
+- [ ] `views.py`: ViewingRequestCreateView, MyViewingRequestListView
+- [ ] `urls.py`: エンドポイント登録
+
+### bulletin
+- [ ] `serializers.py`: ArticleSerializer
+- [ ] `views.py`: ArticleListView, ArticleDetailView, ArticleCreateView
+- [ ] `urls.py`: エンドポイント登録
+
+### テスト
+- [ ] `tests/conftest.py`: APIClient fixture, 認証済みユーザーfixture
+- [ ] `tests/test_properties/test_views.py`: 物件一覧・詳細・フィルタ
+- [ ] `tests/test_interactions/test_views.py`: お気に入りtoggle
+- [ ] `tests/test_accounts/test_views.py`: 登録・ログイン・me
 
 ---
 
