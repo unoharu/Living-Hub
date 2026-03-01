@@ -1,8 +1,10 @@
+import { useState } from 'react'
 import { Link, useParams } from 'react-router'
 import { useTranslation } from 'react-i18next'
 import { usePropertyDetail } from '../hooks/useProperties'
 import Spinner from '../components/ui/Spinner'
 import ErrorMessage from '../components/ui/ErrorMessage'
+import RoomModal from '../components/three/RoomModal'
 import type { Unit } from '../types/api'
 
 const availabilityLabel: Record<Unit['availability'], string> = {
@@ -21,6 +23,7 @@ export default function PropertyDetailPage() {
   const { id } = useParams<{ id: string }>()
   const { t } = useTranslation()
   const { data, isLoading, isError } = usePropertyDetail(Number(id))
+  const [viewing3dUnit, setViewing3dUnit] = useState<number | null>(null)
 
   if (isLoading) {
     return (
@@ -129,14 +132,13 @@ export default function PropertyDetailPage() {
                   <Tag active={unit.credit_card_ok}>クレジットカード可</Tag>
                 </div>
 
-                {/* 3D tour button — Phase 5 */}
+                {/* 3D tour button */}
                 {unit.has_3d_model && (
                   <button
-                    disabled
-                    className="mt-3 rounded-lg bg-blue-50 px-4 py-2 text-sm font-medium text-blue-600 cursor-not-allowed opacity-60"
-                    title="Phase 5 で実装予定"
+                    onClick={() => setViewing3dUnit(unit.id)}
+                    className="mt-3 rounded-lg bg-blue-600 px-4 py-2 text-sm font-medium text-white hover:bg-blue-700 transition-colors"
                   >
-                    {t('property.view3d')}（準備中）
+                    {t('property.view3d')}
                   </button>
                 )}
               </div>
@@ -144,6 +146,11 @@ export default function PropertyDetailPage() {
           </div>
         )}
       </section>
+
+      <RoomModal
+        isOpen={viewing3dUnit !== null}
+        onClose={() => setViewing3dUnit(null)}
+      />
     </div>
   )
 }

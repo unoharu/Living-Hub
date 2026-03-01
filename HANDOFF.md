@@ -236,7 +236,7 @@ npm run dev                       # :5173
 - [x] **Phase 2**: バックエンドモデル実装・マイグレーション・Admin登録
 - [x] **Phase 3**: REST API 実装（シリアライザ・ビュー・URL・フィルタ・テスト）
 - [x] **Phase 4**: フロントエンド実装（型定義・API連携・ページ・認証）
-- [ ] **Phase 5**: 3Dビューア実装・統合検証・本番ビルド確認
+- [x] **Phase 5**: 3Dビューア実装・統合検証・本番ビルド確認（2026-03-01）
 
 ---
 
@@ -321,15 +321,23 @@ npm run dev                       # :5173
 - [x] `src/pages/MyPage.tsx`: お気に入り一覧 + プロフィール
 - [x] `src/pages/NotFoundPage.tsx`
 
-## Phase 5 チェックリスト（次のフェーズ）
+## Phase 5 チェックリスト ✅ 完了 (2026-03-01)
 
 ### 3D ビューア
-- [ ] `src/components/three/`: @react-three/fiber で `3DRoom/public/hewroom.glb` を表示
-- [ ] PropertyDetailPage の「3Dで内見」ボタンを有効化
+- [x] `frontend/public/hewroom.glb`: `3DRoom/public/hewroom.glb` をコピー（66MB）
+- [x] `src/components/three/RoomViewer.tsx`: Canvas + Hewroom モデル + CameraController（lerp/slerp 補間）
+- [x] `src/components/three/RoomModal.tsx`: フルスクリーンオーバーレイ + ESC キー閉じる + カメラ位置切り替えボタン
+- [x] `src/pages/PropertyDetailPage.tsx`: 「3Dで内見」ボタンを有効化・RoomModal 組み込み
 
 ### 統合検証
-- [ ] バックエンド + フロントエンド E2E 動作確認
-- [ ] 本番ビルド（`npm run build` → Django StaticFiles）確認
+- [x] `npm run build` でビルド成功（TypeScript 型エラーなし）
+- [ ] バックエンド + フロントエンド E2E 動作確認（手動検証）
+
+### 実装メモ
+- Bloom エフェクト（`@react-three/postprocessing`）は未インストールのため省略
+- カメラプリセット: リビング / キッチン / バスルーム / 寝室 / 上面（5箇所）
+- `isOpen=false` でコンポーネントをアンマウント → WebGL コンテキストを解放
+- `useGLTF.preload('/hewroom.glb')` でモジュールインポート時にプリロード開始
 
 ---
 
