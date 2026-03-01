@@ -1,0 +1,51 @@
+{
+  "nav": {
+    "home": "ホーム",
+    "properties": "物件一覧",
+    "favorites": "お気に入り",
+    "mypage": "マイページ",
+    "login": "ログイン",
+    "logout": "ログアウト",
+    "register": "新規登録"
+  },
+  "property": {
+    "rent": "賃料",
+    "area": "面積",
+    "layout": "間取り",
+    "walk": "徒歩",
+    "minutes": "分",
+    "floor": "階",
+    "available": "空室",
+    "reserved": "予約中",
+    "contracted": "契約済",
+    "view3d": "3Dで見る",
+    "viewDetail": "詳細を見る",
+    "favorite": "お気に入り",
+    "unfavorite": "お気に入り解除"
+  },
+  "inquiry": {
+    "title": "内見予約",
+    "preferredDate": "希望日",
+    "message": "メッセージ（任意）",
+    "submit": "予約する",
+    "success": "予約が完了しました",
+    "status": {
+      "pending": "申請中",
+      "confirmed": "確定",
+      "completed": "完了",
+      "cancelled": "キャンセル"
+    }
+  },
+  "auth": {
+    "email": "メールアドレス",
+    "password": "パスワード",
+    "lastName": "姓",
+    "firstName": "名",
+    "loginButton": "ログイン",
+    "registerButton": "登録する"
+  },
+  "error": {
+    "notFound": "ページが見つかりません",
+    "serverError": "サーバーエラーが発生しました"
+  }
+}

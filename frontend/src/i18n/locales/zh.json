@@ -1,0 +1,51 @@
+{
+  "nav": {
+    "home": "首页",
+    "properties": "房源列表",
+    "favorites": "收藏",
+    "mypage": "个人中心",
+    "login": "登录",
+    "logout": "退出",
+    "register": "注册"
+  },
+  "property": {
+    "rent": "租金",
+    "area": "面积",
+    "layout": "户型",
+    "walk": "步行",
+    "minutes": "分钟",
+    "floor": "层",
+    "available": "可入住",
+    "reserved": "预约中",
+    "contracted": "已签约",
+    "view3d": "3D看房",
+    "viewDetail": "查看详情",
+    "favorite": "收藏",
+    "unfavorite": "取消收藏"
+  },
+  "inquiry": {
+    "title": "预约看房",
+    "preferredDate": "期望日期",
+    "message": "留言（可选）",
+    "submit": "提交预约",
+    "success": "预约成功",
+    "status": {
+      "pending": "待确认",
+      "confirmed": "已确认",
+      "completed": "已完成",
+      "cancelled": "已取消"
+    }
+  },
+  "auth": {
+    "email": "邮箱",
+    "password": "密码",
+    "lastName": "姓",
+    "firstName": "名",
+    "loginButton": "登录",
+    "registerButton": "注册"
+  },
+  "error": {
+    "notFound": "页面未找到",
+    "serverError": "服务器错误"
+  }
+}

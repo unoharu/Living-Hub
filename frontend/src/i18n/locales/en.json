@@ -1,0 +1,51 @@
+{
+  "nav": {
+    "home": "Home",
+    "properties": "Properties",
+    "favorites": "Favorites",
+    "mypage": "My Page",
+    "login": "Login",
+    "logout": "Logout",
+    "register": "Sign Up"
+  },
+  "property": {
+    "rent": "Rent",
+    "area": "Area",
+    "layout": "Layout",
+    "walk": "Walk",
+    "minutes": "min",
+    "floor": "F",
+    "available": "Available",
+    "reserved": "Reserved",
+    "contracted": "Contracted",
+    "view3d": "View in 3D",
+    "viewDetail": "View Details",
+    "favorite": "Favorite",
+    "unfavorite": "Unfavorite"
+  },
+  "inquiry": {
+    "title": "Schedule a Viewing",
+    "preferredDate": "Preferred Date",
+    "message": "Message (optional)",
+    "submit": "Submit",
+    "success": "Viewing request submitted",
+    "status": {
+      "pending": "Pending",
+      "confirmed": "Confirmed",
+      "completed": "Completed",
+      "cancelled": "Cancelled"
+    }
+  },
+  "auth": {
+    "email": "Email",
+    "password": "Password",
+    "lastName": "Last Name",
+    "firstName": "First Name",
+    "loginButton": "Login",
+    "registerButton": "Register"
+  },
+  "error": {
+    "notFound": "Page not found",
+    "serverError": "Server error occurred"
+  }
+}
