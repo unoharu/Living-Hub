@@ -45,7 +45,10 @@ export default function LandingPage() {
 
       {/* Hero text */}
       <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-        <div className="pointer-events-auto text-center px-6 animate-fadeIn">
+        <div
+          className="pointer-events-auto mx-4 max-w-md rounded-2xl border border-white/20 p-8 text-center shadow-2xl animate-fadeIn"
+          style={{ background: 'rgba(255,255,255,0.12)', backdropFilter: 'blur(16px)' }}
+        >
           <p className="text-xs font-medium uppercase tracking-[0.25em] text-white/70 mb-3 animate-rise">
             {t('landing.subtitle')}
           </p>
