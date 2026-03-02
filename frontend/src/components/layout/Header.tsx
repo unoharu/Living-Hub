@@ -70,11 +70,14 @@ export default function Header() {
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="flex h-14 items-center justify-between">
             {/* Logo */}
-            <Link to="/" className="flex flex-col leading-none">
-              <span className="text-lg font-bold tracking-tight text-[#1a1f2e]">LIVING HUB</span>
-              <span className="text-[9px] font-medium tracking-[0.15em] text-[#b8ca80] uppercase">
-                Premium Properties
-              </span>
+            <Link to="/" className="flex items-center gap-2 leading-none">
+              <img src="/logo.svg" alt="LIVING HUB" className="h-8 w-auto" />
+              <div className="flex flex-col">
+                <span className="text-lg font-bold tracking-tight text-[#1a1f2e]">LIVING HUB</span>
+                <span className="text-[9px] font-medium tracking-[0.15em] text-[#b8ca80] uppercase">
+                  Premium Properties
+                </span>
+              </div>
             </Link>
 
             {/* Desktop navigation */}

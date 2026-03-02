@@ -62,6 +62,17 @@
     "loginButton": "登录",
     "registerButton": "注册"
   },
+  "landing": {
+    "subtitle": "不动产物业信息网站",
+    "description": "我们根据共同的爱好和生活方式提供房源，汇聚志同道合的社区，支持舒适的居住生活。",
+    "cta": "按地区搜索"
+  },
+  "footer": {
+    "privacy": "隐私政策",
+    "terms": "服务条款",
+    "address": "东京都新宿区西新宿1-12-12 Mode学园茧塔",
+    "contact": "联系我们"
+  },
   "error": {
     "notFound": "页面未找到",
     "serverError": "服务器错误"

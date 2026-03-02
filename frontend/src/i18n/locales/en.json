@@ -62,6 +62,17 @@
     "loginButton": "Login",
     "registerButton": "Register"
   },
+  "landing": {
+    "subtitle": "Real Estate Property Information Site",
+    "description": "We provide properties tailored to shared hobbies and lifestyles. We form communities where people with the same interests gather, supporting a comfortable living experience.",
+    "cta": "Search by Area"
+  },
+  "footer": {
+    "privacy": "Privacy Policy",
+    "terms": "Terms of Service",
+    "address": "1-12-12 Nishi-Shinjuku, Shinjuku-ku, Tokyo, Mode Gakuen Cocoon Tower",
+    "contact": "Contact"
+  },
   "error": {
     "notFound": "Page not found",
     "serverError": "Server error occurred"

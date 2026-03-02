@@ -2,6 +2,7 @@ import { Canvas } from '@react-three/fiber'
 import { Environment, OrbitControls } from '@react-three/drei'
 import { Suspense } from 'react'
 import { Link } from 'react-router'
+import { useTranslation } from 'react-i18next'
 import { City } from '../components/three/City'
 
 function CityScene() {
@@ -27,9 +28,10 @@ function CityScene() {
 }
 
 export default function LandingPage() {
+  const { t } = useTranslation()
+
   return (
     <div className="relative h-screen w-screen overflow-hidden bg-[#1a1f2e]">
-      {/* 3D City Canvas — fills the entire viewport */}
       <Canvas
         shadows
         camera={{ fov: 60, position: [0, 15, 40], near: 0.1, far: 500 }}
@@ -38,37 +40,28 @@ export default function LandingPage() {
         <CityScene />
       </Canvas>
 
-      {/* Bottom gradient overlay for card readability */}
+      {/* Gradient overlay */}
       <div className="absolute inset-0 bg-gradient-to-t from-[#1a1f2e]/80 via-transparent to-transparent pointer-events-none" />
 
-      {/* Hero card — glassmorphism */}
+      {/* Hero text */}
       <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-        <div
-          className="pointer-events-auto mx-4 max-w-md rounded-2xl border border-white/20 p-8 text-center shadow-2xl landing-card"
-          style={{ background: 'rgba(255,255,255,0.12)', backdropFilter: 'blur(16px)' }}
-        >
-          <p className="mb-2 text-xs font-medium uppercase tracking-[0.2em] text-white/60">
-            不動産物件情報サイト
+        <div className="pointer-events-auto text-center px-6 animate-fadeIn">
+          <p className="text-xs font-medium uppercase tracking-[0.25em] text-white/70 mb-3 animate-rise">
+            {t('landing.subtitle')}
           </p>
-          <h1 className="mb-6 text-4xl font-bold tracking-tight text-white landing-title">
+          <h1 className="text-5xl sm:text-6xl font-bold tracking-tight text-white mb-6 animate-rise">
             LIVING HUB
           </h1>
-          <p className="mb-8 text-sm leading-relaxed text-white/70">
-            3Dで内見できる、次世代の物件探し体験
+          <p className="text-sm sm:text-base leading-relaxed text-white/70 mb-10 max-w-md mx-auto animate-rise">
+            {t('landing.description')}
           </p>
           <Link
             to="/properties"
-            className="inline-flex items-center gap-2 rounded-xl px-8 py-3 text-sm font-semibold text-white transition-all duration-300 hover:gap-3 hover:shadow-lg"
+            className="inline-flex items-center gap-2 rounded-xl px-8 py-3 text-sm font-semibold text-white transition-all duration-300 hover:opacity-90 hover:shadow-lg animate-rise"
             style={{ background: 'linear-gradient(135deg, #b8ca80, #8fa84e)' }}
           >
-            物件を探す
-            <svg
-              className="h-4 w-4"
-              fill="none"
-              viewBox="0 0 24 24"
-              strokeWidth={2}
-              stroke="currentColor"
-            >
+            {t('landing.cta')}
+            <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
             </svg>
           </Link>
