@@ -32,9 +32,19 @@ export async function toggleFavorite(
   return data
 }
 
+interface FavoriteItem {
+  id: number
+  property: Property
+  created_at: string
+}
+
 export async function fetchFavorites(): Promise<PaginatedResponse<Property>> {
-  const { data } = await apiClient.get<PaginatedResponse<Property>>(
+  const { data } = await apiClient.get<PaginatedResponse<FavoriteItem>>(
     '/interactions/favorites/'
   )
-  return data
+  // Backend returns Favorite objects with nested property — unwrap to Property list
+  return {
+    ...data,
+    results: data.results.map((f) => f.property),
+  }
 }

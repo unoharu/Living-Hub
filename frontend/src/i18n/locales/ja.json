@@ -2,6 +2,7 @@
   "nav": {
     "home": "ホーム",
     "properties": "物件一覧",
+    "bulletin": "掲示板",
     "favorites": "お気に入り",
     "mypage": "マイページ",
     "login": "ログイン",
@@ -21,20 +22,37 @@
     "view3d": "3Dで見る",
     "viewDetail": "詳細を見る",
     "favorite": "お気に入り",
-    "unfavorite": "お気に入り解除"
+    "unfavorite": "お気に入り解除",
+    "bookViewing": "内見予約"
   },
   "inquiry": {
     "title": "内見予約",
     "preferredDate": "希望日",
     "message": "メッセージ（任意）",
     "submit": "予約する",
+    "submitting": "送信中...",
     "success": "予約が完了しました",
+    "error": "送信に失敗しました。もう一度お試しください。",
     "status": {
       "pending": "申請中",
       "confirmed": "確定",
       "completed": "完了",
       "cancelled": "キャンセル"
     }
+  },
+  "viewing": {
+    "sectionTitle": "内見予約一覧",
+    "empty": "内見予約はありません",
+    "unit": "部屋",
+    "date": "希望日"
+  },
+  "bulletin": {
+    "title": "掲示板",
+    "newPost": "投稿する",
+    "postTitle": "タイトル",
+    "postContent": "内容",
+    "submit": "投稿する",
+    "empty": "まだ投稿がありません"
   },
   "auth": {
     "email": "メールアドレス",

@@ -2,6 +2,7 @@
   "nav": {
     "home": "Home",
     "properties": "Properties",
+    "bulletin": "Bulletin Board",
     "favorites": "Favorites",
     "mypage": "My Page",
     "login": "Login",
@@ -21,20 +22,37 @@
     "view3d": "View in 3D",
     "viewDetail": "View Details",
     "favorite": "Favorite",
-    "unfavorite": "Unfavorite"
+    "unfavorite": "Unfavorite",
+    "bookViewing": "Book Viewing"
   },
   "inquiry": {
     "title": "Schedule a Viewing",
     "preferredDate": "Preferred Date",
     "message": "Message (optional)",
     "submit": "Submit",
+    "submitting": "Submitting...",
     "success": "Viewing request submitted",
+    "error": "Failed to submit. Please try again.",
     "status": {
       "pending": "Pending",
       "confirmed": "Confirmed",
       "completed": "Completed",
       "cancelled": "Cancelled"
     }
+  },
+  "viewing": {
+    "sectionTitle": "Viewing Requests",
+    "empty": "No viewing requests",
+    "unit": "Unit",
+    "date": "Preferred Date"
+  },
+  "bulletin": {
+    "title": "Bulletin Board",
+    "newPost": "Post",
+    "postTitle": "Title",
+    "postContent": "Content",
+    "submit": "Post",
+    "empty": "No posts yet"
   },
   "auth": {
     "email": "Email",

@@ -14,7 +14,7 @@ export default function PropertyCard({ property }: PropertyCardProps) {
   const toggleFavorite = useToggleFavorite()
 
   function handleFavoriteClick(e: React.MouseEvent) {
-    e.preventDefault() // Prevent card link navigation
+    e.preventDefault()
     if (!isAuthenticated) return
     toggleFavorite.mutate(property.id)
   }
@@ -22,33 +22,35 @@ export default function PropertyCard({ property }: PropertyCardProps) {
   return (
     <Link
       to={`/properties/${property.id}`}
-      className="group block rounded-xl border border-gray-200 bg-white shadow-sm hover:shadow-md transition-shadow overflow-hidden"
+      className="group block rounded-2xl bg-white shadow-md hover:shadow-xl hover:-translate-y-1 transition-all duration-300 overflow-hidden border-0"
     >
       {/* Cover image */}
-      <div className="relative aspect-[4/3] bg-gray-100">
+      <div className="relative aspect-[4/3] bg-gray-100 overflow-hidden">
         {property.cover_image ? (
-          <img
-            src={property.cover_image}
-            alt={property.property_name}
-            className="h-full w-full object-cover group-hover:scale-[1.02] transition-transform duration-300"
-          />
+          <>
+            <img
+              src={property.cover_image}
+              alt={property.property_name}
+              className="h-full w-full object-cover group-hover:scale-105 transition-transform duration-500"
+            />
+            {/* Bottom gradient overlay */}
+            <div className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-black/40 to-transparent" />
+          </>
         ) : (
           <div className="flex h-full items-center justify-center text-gray-400 text-sm">
             No Image
           </div>
         )}
 
-        {/* Favorite button — only for authenticated users */}
+        {/* Favorite button */}
         {isAuthenticated && (
           <button
             onClick={handleFavoriteClick}
-            aria-label={
-              property.is_favorite ? t('property.unfavorite') : t('property.favorite')
-            }
-            className="absolute top-2 right-2 rounded-full bg-white/90 p-1.5 shadow hover:bg-white transition-colors"
+            aria-label={property.is_favorite ? t('property.unfavorite') : t('property.favorite')}
+            className="absolute top-3 right-3 rounded-full bg-white/90 p-2 shadow-md hover:bg-white transition-colors backdrop-blur-sm"
           >
             <svg
-              className={`h-5 w-5 ${property.is_favorite ? 'fill-red-500 stroke-red-500' : 'fill-none stroke-gray-400'}`}
+              className={`h-4 w-4 ${property.is_favorite ? 'fill-red-500 stroke-red-500' : 'fill-none stroke-gray-400'}`}
               viewBox="0 0 24 24"
               strokeWidth={1.5}
             >
@@ -69,27 +71,32 @@ export default function PropertyCard({ property }: PropertyCardProps) {
           {property.property_name}
         </h3>
 
-        {/* Location */}
-        <p className="text-xs text-gray-500 mb-2">
+        {/* Location with pin icon */}
+        <p className="flex items-center gap-1 text-xs text-gray-500 mb-1">
+          <svg className="h-3 w-3 shrink-0 text-[#b8ca80]" viewBox="0 0 24 24" fill="currentColor">
+            <path
+              fillRule="evenodd"
+              d="M11.54 22.351l.07.04.028.016a.76.76 0 0 0 .723 0l.028-.015.07-.041a16.975 16.975 0 0 0 1.144-.742 19.58 19.58 0 0 0 2.683-2.282c1.944-2.003 3.5-4.697 3.5-8.327a8 8 0 0 0-16 0c0 3.63 1.556 6.326 3.5 8.327a19.58 19.58 0 0 0 2.682 2.282 16.975 16.975 0 0 0 1.144.742ZM12 13.5a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z"
+              clipRule="evenodd"
+            />
+          </svg>
           {property.city_name} {property.ward_name}
         </p>
 
         {/* Station info */}
-        <p className="text-xs text-gray-500 mb-3">
-          {property.line} {property.station}{' '}
-          {t('property.walk')}
-          {property.walk_minute}
-          {t('property.minutes')}
+        <p className="text-xs text-gray-400 mb-3">
+          {property.line} {property.station} {t('property.walk')}{property.walk_minute}{t('property.minutes')}
         </p>
 
-        {/* Rent */}
+        {/* Rent — sage green accent */}
         <div className="flex items-baseline gap-1">
-          <span className="text-xs text-gray-500">{t('property.rent')}</span>
-          {property.min_rent !== null ? (
-            <span className="text-base font-bold text-gray-900">
-              ¥{property.min_rent.toLocaleString()}
-              <span className="text-xs font-normal text-gray-500">/月〜</span>
-            </span>
+          {property.min_rent != null ? (
+            <>
+              <span className="text-lg font-bold" style={{ color: '#1a1f2e' }}>
+                ¥{property.min_rent.toLocaleString()}
+              </span>
+              <span className="text-xs text-gray-400">/月〜</span>
+            </>
           ) : (
             <span className="text-sm text-gray-400">—</span>
           )}

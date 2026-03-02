@@ -2,9 +2,11 @@ import { useState } from 'react'
 import { Link, useParams } from 'react-router'
 import { useTranslation } from 'react-i18next'
 import { usePropertyDetail } from '../hooks/useProperties'
+import useAuthStore from '../stores/authStore'
 import Spinner from '../components/ui/Spinner'
 import ErrorMessage from '../components/ui/ErrorMessage'
 import RoomModal from '../components/three/RoomModal'
+import BookingModal from '../components/property/BookingModal'
 import type { Unit } from '../types/api'
 
 const availabilityLabel: Record<Unit['availability'], string> = {
@@ -23,7 +25,9 @@ export default function PropertyDetailPage() {
   const { id } = useParams<{ id: string }>()
   const { t } = useTranslation()
   const { data, isLoading, isError } = usePropertyDetail(Number(id))
+  const isAuthenticated = useAuthStore((s) => s.isAuthenticated)
   const [viewing3dUnit, setViewing3dUnit] = useState<number | null>(null)
+  const [bookingUnit, setBookingUnit] = useState<{ id: number; label: string } | null>(null)
 
   if (isLoading) {
     return (
@@ -132,15 +136,31 @@ export default function PropertyDetailPage() {
                   <Tag active={unit.credit_card_ok}>クレジットカード可</Tag>
                 </div>
 
-                {/* 3D tour button */}
-                {unit.has_3d_model && (
-                  <button
-                    onClick={() => setViewing3dUnit(unit.id)}
-                    className="mt-3 rounded-lg bg-blue-600 px-4 py-2 text-sm font-medium text-white hover:bg-blue-700 transition-colors"
-                  >
-                    {t('property.view3d')}
-                  </button>
-                )}
+                {/* Action buttons */}
+                <div className="mt-3 flex flex-wrap gap-2">
+                  {unit.has_3d_model && (
+                    <button
+                      onClick={() => setViewing3dUnit(unit.id)}
+                      className="rounded-lg bg-blue-600 px-4 py-2 text-sm font-medium text-white hover:bg-blue-700 transition-colors"
+                    >
+                      {t('property.view3d')}
+                    </button>
+                  )}
+
+                  {unit.availability === 'available' && isAuthenticated && (
+                    <button
+                      onClick={() =>
+                        setBookingUnit({
+                          id: unit.id,
+                          label: `${data.property_name} ${unit.room_number}`,
+                        })
+                      }
+                      className="rounded-lg border border-[#b8ca80] px-4 py-2 text-sm font-medium text-[#7a9040] hover:bg-[#b8ca80] hover:text-white transition-colors"
+                    >
+                      {t('property.bookViewing')}
+                    </button>
+                  )}
+                </div>
               </div>
             ))}
           </div>
@@ -150,6 +170,12 @@ export default function PropertyDetailPage() {
       <RoomModal
         isOpen={viewing3dUnit !== null}
         onClose={() => setViewing3dUnit(null)}
+      />
+
+      <BookingModal
+        unitId={bookingUnit?.id ?? null}
+        unitLabel={bookingUnit?.label ?? ''}
+        onClose={() => setBookingUnit(null)}
       />
     </div>
   )

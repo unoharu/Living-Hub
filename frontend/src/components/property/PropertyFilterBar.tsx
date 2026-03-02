@@ -10,6 +10,9 @@ const RENT_RANGES = [
   { label: '15万円〜', min: 150000 },
 ]
 
+const fieldClass =
+  'w-full rounded-lg border-0 bg-gray-50 px-3 py-2.5 text-sm text-gray-700 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#b8ca80]'
+
 export default function PropertyFilterBar() {
   const { t } = useTranslation()
   const [params, setParams] = useSearchParams()
@@ -21,7 +24,6 @@ export default function PropertyFilterBar() {
     } else {
       next.delete(key)
     }
-    // Reset page when filter changes
     next.delete('page')
     setParams(next)
   }
@@ -49,54 +51,64 @@ export default function PropertyFilterBar() {
       String(r.max ?? '') === (currentMaxRent ?? '')
   )
 
+  const hasFilters = params.toString().length > 0
+
   return (
-    <div className="flex flex-wrap gap-3 rounded-xl border border-gray-200 bg-white p-4 shadow-sm">
-      {/* Ward / area search */}
-      <input
-        type="text"
-        placeholder="エリア（例: 渋谷区）"
-        defaultValue={params.get('ward') ?? ''}
-        onChange={(e) => update('ward', e.target.value)}
-        className="rounded-lg border border-gray-300 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
-      />
+    <div className="rounded-2xl border border-gray-100 bg-white p-4 shadow-md">
+      <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:gap-3">
+        {/* Area search */}
+        <div className="flex-1">
+          <input
+            type="text"
+            placeholder="エリア（例: 渋谷区）"
+            defaultValue={params.get('ward') ?? ''}
+            onChange={(e) => update('ward', e.target.value)}
+            className={fieldClass}
+          />
+        </div>
 
-      {/* Rent range */}
-      <select
-        value={selectedRentIndex >= 0 ? selectedRentIndex : ''}
-        onChange={handleRentChange}
-        className="rounded-lg border border-gray-300 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
-      >
-        <option value="">{t('property.rent')}</option>
-        {RENT_RANGES.map((r, i) => (
-          <option key={i} value={i}>
-            {r.label}
-          </option>
-        ))}
-      </select>
+        {/* Rent range */}
+        <div className="sm:w-40">
+          <select
+            value={selectedRentIndex >= 0 ? selectedRentIndex : ''}
+            onChange={handleRentChange}
+            className={fieldClass}
+          >
+            <option value="">{t('property.rent')}</option>
+            {RENT_RANGES.map((r, i) => (
+              <option key={i} value={i}>
+                {r.label}
+              </option>
+            ))}
+          </select>
+        </div>
 
-      {/* Layout */}
-      <select
-        value={params.get('layout') ?? ''}
-        onChange={(e) => update('layout', e.target.value)}
-        className="rounded-lg border border-gray-300 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
-      >
-        <option value="">{t('property.layout')}</option>
-        {LAYOUT_OPTIONS.map((l) => (
-          <option key={l} value={l}>
-            {l}
-          </option>
-        ))}
-      </select>
+        {/* Layout */}
+        <div className="sm:w-32">
+          <select
+            value={params.get('layout') ?? ''}
+            onChange={(e) => update('layout', e.target.value)}
+            className={fieldClass}
+          >
+            <option value="">{t('property.layout')}</option>
+            {LAYOUT_OPTIONS.map((l) => (
+              <option key={l} value={l}>
+                {l}
+              </option>
+            ))}
+          </select>
+        </div>
 
-      {/* Clear all filters */}
-      {params.toString() && (
-        <button
-          onClick={() => setParams({})}
-          className="rounded-lg border border-gray-300 px-3 py-2 text-sm text-gray-600 hover:bg-gray-50 transition-colors"
-        >
-          クリア
-        </button>
-      )}
+        {/* Clear button — only shown when filters are active */}
+        {hasFilters && (
+          <button
+            onClick={() => setParams({})}
+            className="shrink-0 rounded-lg border border-gray-200 px-4 py-2.5 text-sm text-gray-500 hover:bg-gray-50 transition-colors"
+          >
+            クリア
+          </button>
+        )}
+      </div>
     </div>
   )
 }

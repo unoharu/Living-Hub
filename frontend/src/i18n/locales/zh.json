@@ -2,6 +2,7 @@
   "nav": {
     "home": "首页",
     "properties": "房源列表",
+    "bulletin": "公告栏",
     "favorites": "收藏",
     "mypage": "个人中心",
     "login": "登录",
@@ -21,20 +22,37 @@
     "view3d": "3D看房",
     "viewDetail": "查看详情",
     "favorite": "收藏",
-    "unfavorite": "取消收藏"
+    "unfavorite": "取消收藏",
+    "bookViewing": "预约看房"
   },
   "inquiry": {
     "title": "预约看房",
     "preferredDate": "期望日期",
     "message": "留言（可选）",
     "submit": "提交预约",
+    "submitting": "提交中...",
     "success": "预约成功",
+    "error": "提交失败，请重试。",
     "status": {
       "pending": "待确认",
       "confirmed": "已确认",
       "completed": "已完成",
       "cancelled": "已取消"
     }
+  },
+  "viewing": {
+    "sectionTitle": "看房预约",
+    "empty": "暂无看房预约",
+    "unit": "房间",
+    "date": "期望日期"
+  },
+  "bulletin": {
+    "title": "公告栏",
+    "newPost": "发帖",
+    "postTitle": "标题",
+    "postContent": "内容",
+    "submit": "发布",
+    "empty": "暂无帖子"
   },
   "auth": {
     "email": "邮箱",
