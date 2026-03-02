@@ -2,9 +2,8 @@
 
 **3D 内見ができる不動産物件検索サービス**
 
-[![Demo Video](https://github.com/unoharu/HewProject2024/assets/147580162/1d3ce36c-5841-4dd4-b9cc-963ce4feb504)](https://youtu.be/dA-nbTaytcs)
+<img width="2940" height="1602" alt="image" src="https://github.com/user-attachments/assets/a24d7111-fd16-40b7-a3ad-32a50a375e61" />
 
-> ↑ クリックでデモ動画を再生
 
 ---
 
