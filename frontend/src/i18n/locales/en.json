@@ -1,0 +1,80 @@
+{
+  "nav": {
+    "home": "Home",
+    "properties": "Properties",
+    "bulletin": "Bulletin Board",
+    "favorites": "Favorites",
+    "mypage": "My Page",
+    "login": "Login",
+    "logout": "Logout",
+    "register": "Sign Up"
+  },
+  "property": {
+    "rent": "Rent",
+    "area": "Area",
+    "layout": "Layout",
+    "walk": "Walk",
+    "minutes": "min",
+    "floor": "F",
+    "available": "Available",
+    "reserved": "Reserved",
+    "contracted": "Contracted",
+    "view3d": "View in 3D",
+    "viewDetail": "View Details",
+    "favorite": "Favorite",
+    "unfavorite": "Unfavorite",
+    "bookViewing": "Book Viewing"
+  },
+  "inquiry": {
+    "title": "Schedule a Viewing",
+    "preferredDate": "Preferred Date",
+    "message": "Message (optional)",
+    "submit": "Submit",
+    "submitting": "Submitting...",
+    "success": "Viewing request submitted",
+    "error": "Failed to submit. Please try again.",
+    "status": {
+      "pending": "Pending",
+      "confirmed": "Confirmed",
+      "completed": "Completed",
+      "cancelled": "Cancelled"
+    }
+  },
+  "viewing": {
+    "sectionTitle": "Viewing Requests",
+    "empty": "No viewing requests",
+    "unit": "Unit",
+    "date": "Preferred Date"
+  },
+  "bulletin": {
+    "title": "Bulletin Board",
+    "newPost": "Post",
+    "postTitle": "Title",
+    "postContent": "Content",
+    "submit": "Post",
+    "empty": "No posts yet"
+  },
+  "auth": {
+    "email": "Email",
+    "password": "Password",
+    "lastName": "Last Name",
+    "firstName": "First Name",
+    "loginButton": "Login",
+    "registerButton": "Register"
+  },
+  "landing": {
+    "subtitle": "Real Estate Property Information Site",
+    "description": "We provide properties tailored to shared hobbies and lifestyles. We form communities where people with the same interests gather, supporting a comfortable living experience.",
+    "cta": "Search by Area"
+  },
+  "footer": {
+    "privacy": "Privacy Policy",
+    "terms": "Terms of Service",
+    "address": "1-12-12 Nishi-Shinjuku, Shinjuku-ku, Tokyo, Mode Gakuen Cocoon Tower",
+    "contact": "Contact"
+  },
+  "error": {
+    "notFound": "Page not found",
+    "serverError": "Server error occurred"
+  }
+}

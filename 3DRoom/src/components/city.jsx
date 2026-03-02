@@ -8,7 +8,6 @@ export function City(props) {
   const { actions } = useAnimations(animations, group);
 
   useEffect(() => {
-    // 모든 애니메이션을 반복 재생합니다.
     Object.values(actions).forEach(action => {
       action.reset().setLoop(THREE.LoopRepeat).play();
     });

@@ -1,0 +1,171 @@
+[
+  {
+    "model": "properties.city",
+    "pk": 1,
+    "fields": { "name": "東京都" }
+  },
+  {
+    "model": "properties.ward",
+    "pk": 1,
+    "fields": { "city": 1, "name": "新宿区" }
+  },
+  {
+    "model": "properties.ward",
+    "pk": 2,
+    "fields": { "city": 1, "name": "渋谷区" }
+  },
+  {
+    "model": "properties.ward",
+    "pk": 3,
+    "fields": { "city": 1, "name": "港区" }
+  },
+  {
+    "model": "properties.propertytype",
+    "pk": 1,
+    "fields": { "name": "マンション" }
+  },
+  {
+    "model": "properties.propertytype",
+    "pk": 2,
+    "fields": { "name": "アパート" }
+  },
+  {
+    "model": "properties.propertytype",
+    "pk": 3,
+    "fields": { "name": "戸建て" }
+  },
+  {
+    "model": "properties.amenitycategory",
+    "pk": 1,
+    "fields": { "name": "バス・トイレ" }
+  },
+  {
+    "model": "properties.amenitycategory",
+    "pk": 2,
+    "fields": { "name": "キッチン" }
+  },
+  {
+    "model": "properties.amenitycategory",
+    "pk": 3,
+    "fields": { "name": "設備・サービス" }
+  },
+  {
+    "model": "properties.amenitycategory",
+    "pk": 4,
+    "fields": { "name": "その他" }
+  },
+  {
+    "model": "properties.amenity",
+    "pk": 1,
+    "fields": { "category": 1, "name": "バスタブ" }
+  },
+  {
+    "model": "properties.amenity",
+    "pk": 2,
+    "fields": { "category": 1, "name": "シャワー" }
+  },
+  {
+    "model": "properties.amenity",
+    "pk": 3,
+    "fields": { "category": 1, "name": "独立洗面台" }
+  },
+  {
+    "model": "properties.amenity",
+    "pk": 4,
+    "fields": { "category": 1, "name": "洗浄便座" }
+  },
+  {
+    "model": "properties.amenity",
+    "pk": 5,
+    "fields": { "category": 2, "name": "システムキッチン" }
+  },
+  {
+    "model": "properties.amenity",
+    "pk": 6,
+    "fields": { "category": 2, "name": "IHコンロ" }
+  },
+  {
+    "model": "properties.amenity",
+    "pk": 7,
+    "fields": { "category": 2, "name": "食器洗い乾燥機" }
+  },
+  {
+    "model": "properties.amenity",
+    "pk": 8,
+    "fields": { "category": 3, "name": "エアコン" }
+  },
+  {
+    "model": "properties.amenity",
+    "pk": 9,
+    "fields": { "category": 3, "name": "床暖房" }
+  },
+  {
+    "model": "properties.amenity",
+    "pk": 10,
+    "fields": { "category": 3, "name": "オートロック" }
+  },
+  {
+    "model": "properties.amenity",
+    "pk": 11,
+    "fields": { "category": 3, "name": "宅配ボックス" }
+  },
+  {
+    "model": "properties.amenity",
+    "pk": 12,
+    "fields": { "category": 3, "name": "モニター付きインターホン" }
+  },
+  {
+    "model": "properties.amenity",
+    "pk": 13,
+    "fields": { "category": 4, "name": "SOHO可" }
+  },
+  {
+    "model": "properties.amenity",
+    "pk": 14,
+    "fields": { "category": 4, "name": "楽器可" }
+  },
+  {
+    "model": "properties.property",
+    "pk": 1,
+    "fields": {
+      "property_type": 1,
+      "ward": 1,
+      "property_name": "Living Hub Shinjuku",
+      "address": "東京都新宿区西新宿1-1-1",
+      "station": "新宿",
+      "line": "JR山手線",
+      "walk_minute": 5,
+      "year_built": 2020,
+      "phone_number": "03-1234-5678",
+      "cover_image": "",
+      "created_at": "2024-01-01T00:00:00Z",
+      "updated_at": "2024-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "properties.unit",
+    "pk": 1,
+    "fields": {
+      "property": 1,
+      "room_number": "301",
+      "floor": 3,
+      "layout": "1LDK",
+      "layout_image": "",
+      "area": "45.50",
+      "rent": 150000,
+      "management_fee": 10000,
+      "deposit_months": 2,
+      "key_money_months": 1,
+      "credit_card_ok": true,
+      "parking": false,
+      "pet_allowed": false,
+      "position": "南向き",
+      "remarks": "3Dで内見できる物件です。",
+      "tour_url": "",
+      "has_3d_model": true,
+      "availability": "available",
+      "created_at": "2024-01-01T00:00:00Z",
+      "updated_at": "2024-01-01T00:00:00Z"
+    }
+  }
+]
